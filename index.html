@@ -13,11 +13,11 @@
 <section class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
   <div class="bg-white rounded-xl shadow p-4">
     <div class="text-sm text-gray-500">当前周次</div>
-    <div class="text-xl font-bold">第 4 / 8 周</div>
+    <div class="text-xl font-bold">第 5 / 8 周</div>
   </div>
   <div class="bg-white rounded-xl shadow p-4">
     <div class="text-sm text-gray-500">承接完成率</div>
-    <div class="text-xl font-bold text-green-600">90%</div>
+    <div class="text-xl font-bold text-green-600">85%</div>
   </div>
   <div class="bg-white rounded-xl shadow p-4">
     <div class="text-sm text-gray-500">本周状态</div>
@@ -29,7 +29,7 @@
   </div>
   <div class="bg-white rounded-xl shadow p-4">
     <div class="text-sm text-gray-500">风险数量</div>
-    <div class="text-xl font-bold text-red-500">2</div>
+    <div class="text-xl font-bold text-red-500">3</div>
   </div>
 </section>
 
@@ -38,10 +38,11 @@
   <div class="flex items-center gap-4">
     <label class="text-sm font-medium">切换周次：</label>
     <select id="weekSelector" class="border rounded px-3 py-1 text-sm">
-      <option value="week1">第 1 周（2026-06-02 ～ 06-08）</option>
-      <option value="week2">第 2 周（2026-06-09 ～ 06-15）</option>
-      <option value="week3">第 3 周（2026-06-16 ～ 06-22）</option>
-      <option value="week4" selected>第 4 周（2026-06-22 ～ 06-26）</option>
+      <option value="week1">第 1 周（2025-06-02 ～ 06-08）</option>
+      <option value="week2">第 2 周（2025-06-09 ～ 06-15）</option>
+      <option value="week3">第 3 周（2025-06-16 ～ 06-22）</option>
+      <option value="week4">第 4 周（2025-06-23 ～ 06-29）</option>
+      <option value="week5" selected>第 5 周（2025-06-29 ～ 07-03）</option>
     </select>
   </div>
 </section>
@@ -71,7 +72,7 @@
           <div class="flex gap-1">
             <div class="w-8 h-6 bg-green-600 rounded" title="W1 已完成"></div>
             <div class="w-8 h-6 bg-green-500 rounded" title="W2 已完成"></div>
-            <div class="w-8 h-6 bg-green-500 rounded" title="W3 办理账户"></div>
+            <div class="w-8 h-6 bg-blue-500 rounded" title="W3 办理账户"></div>
             <div class="w-8 h-6 bg-blue-500 rounded" title="W4 月度购买"></div>
             <div class="w-8 h-6 bg-green-300 rounded" title="W5 独立试运行"></div>
             <div class="w-8 h-6 bg-gray-200 rounded"></div>
@@ -87,8 +88,8 @@
             <div class="w-8 h-6 bg-green-400 rounded" title="W2 部分完成"></div>
             <div class="w-8 h-6 bg-blue-500 rounded" title="W3 学习"></div>
             <div class="w-8 h-6 bg-blue-500 rounded" title="W4 继续学习"></div>
+            <div class="w-8 h-6 bg-green-300 rounded" title="W5 独立试运行"></div>
             <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-green-300 rounded" title="W6 独立试运行"></div>
             <div class="w-8 h-6 bg-gray-200 rounded"></div>
             <div class="w-8 h-6 bg-green-600 rounded" title="W8 验收"></div>
           </div>
@@ -146,7 +147,7 @@
       <hr class="my-4" />
 
       <div class="space-y-3 text-sm">
-        <div class="flex justify-between"><span>本周离职</span><span class="font-bold text-red-600">0 人</span></div>
+        <div class="flex justify-between"><span>本周离职</span><span class="font-bold text-red-600">1 人（儒商）</span></div>
         <div class="flex justify-between"><span>本周入职</span><span class="font-bold text-green-600">0 人</span></div>
         <div class="flex justify-between"><span>考勤异常</span><span class="font-bold text-red-500">0 人</span></div>
         <div class="flex justify-between"><span>端午福利发放</span><span class="font-bold text-green-600">✅ 完成</span></div>
@@ -157,8 +158,8 @@
 
 </section>
 
-<!-- ===== 周报对比（第 4 周 · 根据日报更新）===== -->
-<section id="week4" class="week-content">
+<!-- ===== 周报对比（第 5 周 · 最终版）===== -->
+<section id="week5" class="week-content">
   <section class="bg-white rounded-xl shadow p-4 mb-6">
     <h2 class="font-bold text-lg mb-4">📊 周报对比（上周计划 → 本周预计完成）</h2>
 
@@ -175,100 +176,142 @@
           </tr>
         </thead>
         <tbody>
-          <!-- 第一组：上周已有计划 & 实际 -->
+          <!-- ===== 已闭环 ===== -->
           <tr class="border-b">
             <td class="px-3 py-2 font-medium">
               <a href="https://xiaojunchen0423-boop.github.io/hr-notice-tool/" target="_blank" class="text-blue-600 hover:underline">
                 人事通知自动生成小工具 ↗
               </a>
             </td>
-            <td class="px-3 py-2">完成初版</td>
-            <td class="px-3 py-2">✅ 已完成</td>
             <td class="px-3 py-2">优化迭代</td>
-            <td class="px-3 py-2">✅ 完成优化</td>
-            <td class="px-3 py-2 text-green-600">进行中</td>
+            <td class="px-3 py-2">✅ 已完成</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2 text-green-600">已闭环</td>
           </tr>
           <tr class="border-b">
-            <td class="px-3 py-2 font-medium">公积金开户</td>
-            <td class="px-3 py-2">完成账户开办预约</td>
-            <td class="px-3 py-2">⏸️ 暂缓</td>
-            <td class="px-3 py-2">收取营业执照后安排</td>
-            <td class="px-3 py-2">✅ 完成开户</td>
+            <td class="px-3 py-2 font-medium">6月月度考勤</td>
+            <td class="px-3 py-2">完成6月考勤统计</td>
+            <td class="px-3 py-2">✅ 已完成</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2 text-green-600">已闭环</td>
+          </tr>
+          <tr class="border-b">
+            <td class="px-3 py-2 font-medium">同福西租金支付</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">✅ 已完成</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2 text-green-600">已闭环</td>
+          </tr>
+          <tr class="border-b">
+            <td class="px-3 py-2 font-medium">IFC 相关费用支付</td>
+            <td class="px-3 py-2">完成7月租金、物业管理费，5月电费支付申请</td>
+            <td class="px-3 py-2">🟡 待财务审核</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">—</td>
             <td class="px-3 py-2 text-yellow-600">进行中</td>
           </tr>
           <tr class="border-b">
-            <td class="px-3 py-2 font-medium">社保月度购买</td>
-            <td class="px-3 py-2">确认异动及余额</td>
-            <td class="px-3 py-2">✅ 已完成（6家）</td>
-            <td class="px-3 py-2">完成玉枕社保购买</td>
-            <td class="px-3 py-2">✅ 完成玉枕社保购买</td>
+            <td class="px-3 py-2 font-medium">工资表制作</td>
+            <td class="px-3 py-2">完成聚客、玉枕、晓麻雀、云算力、儒商工资表</td>
+            <td class="px-3 py-2">✅ 已完成初版发于润莲、文爱</td>
+            <td class="px-3 py-2">完成儒商工资表</td>
+            <td class="px-3 py-2">✅ 完成儒商工资表</td>
             <td class="px-3 py-2 text-yellow-600">进行中</td>
           </tr>
           <tr class="border-b">
-            <td class="px-3 py-2 font-medium">公积金月度购买</td>
-            <td class="px-3 py-2">确认异动及余额</td>
-            <td class="px-3 py-2">✅ 已完成（4家）</td>
-            <td class="px-3 py-2">完成玉枕公积金购买</td>
-            <td class="px-3 py-2">✅ 完成玉枕公积金购买</td>
-            <td class="px-3 py-2 text-yellow-600">进行中</td>
+            <td class="px-3 py-2 font-medium">试用期员工处理</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">✅ 已完成</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2 text-green-600">已闭环</td>
           </tr>
           <tr class="border-b">
-            <td class="px-3 py-2 font-medium">保洁事宜</td>
-            <td class="px-3 py-2">周一下午取现慰问金并交于阿姨</td>
+            <td class="px-3 py-2 font-medium">儒商公积金开户</td>
+            <td class="px-3 py-2">待营业执照返回后办理</td>
+            <td class="px-3 py-2">✅ 已完成（海珠区中心网点）</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2 text-green-600">已闭环</td>
+          </tr>
+          <tr class="border-b">
+            <td class="px-3 py-2 font-medium">老板报销</td>
+            <td class="px-3 py-2">完成6月报销提交</td>
+            <td class="px-3 py-2">✅ 已完成</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2 text-green-600">已闭环</td>
+          </tr>
+          <tr class="border-b">
+            <td class="px-3 py-2 font-medium">儒商公积金 key 管理</td>
+            <td class="px-3 py-2">开通及购买 key</td>
+            <td class="px-3 py-2">✅ 已收到并妥善存放</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2 text-green-600">已闭环</td>
+          </tr>
+          <tr class="border-b">
+            <td class="px-3 py-2 font-medium">通巴达6月租金物管费</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">✅ 已完成</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2 text-green-600">已闭环</td>
+          </tr>
+          <tr class="border-b">
+            <td class="px-3 py-2 font-medium">玉枕社保公积金购买</td>
+            <td class="px-3 py-2">完成玉枕社保/公积金购买</td>
             <td class="px-3 py-2">✅ 已完成</td>
             <td class="px-3 py-2">—</td>
             <td class="px-3 py-2">—</td>
             <td class="px-3 py-2 text-green-600">已闭环</td>
           </tr>
 
-          <!-- 第二组：本周新增计划 -->
+          <!-- ===== 进行中 ===== -->
           <tr class="border-b">
-            <td class="px-3 py-2 font-medium">儒商公积金开户</td>
+            <td class="px-3 py-2 font-medium">工资表修改</td>
             <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2">待营业执照返回后办理开户</td>
-            <td class="px-3 py-2">✅ 完成儒商公积金开户</td>
-            <td class="px-3 py-2 text-yellow-600">计划中</td>
+            <td class="px-3 py-2">🟡 进行中</td>
+            <td class="px-3 py-2">收到现有工资表反馈后完成修改</td>
+            <td class="px-3 py-2">✅ 完成修改并发出</td>
+            <td class="px-3 py-2 text-yellow-600">进行中</td>
           </tr>
           <tr class="border-b">
-            <td class="px-3 py-2 font-medium">6月考勤</td>
+            <td class="px-3 py-2 font-medium">工资表提交审核</td>
             <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2">完成6月考勤统计</td>
-            <td class="px-3 py-2">✅ 完成考勤汇总</td>
-            <td class="px-3 py-2 text-yellow-600">计划中</td>
+            <td class="px-3 py-2">🟡 进行中</td>
+            <td class="px-3 py-2">在系统完成工资表提交、审核</td>
+            <td class="px-3 py-2">✅ 完成提交及审核</td>
+            <td class="px-3 py-2 text-yellow-600">进行中</td>
           </tr>
           <tr class="border-b">
-            <td class="px-3 py-2 font-medium">月度报销</td>
+            <td class="px-3 py-2 font-medium">儒商工资表</td>
             <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2">老板报销已提交</td>
-            <td class="px-3 py-2">完成6月月度报销提交</td>
-            <td class="px-3 py-2">✅ 完成报销提交</td>
-            <td class="px-3 py-2 text-yellow-600">计划中</td>
+            <td class="px-3 py-2">🟡 待数据</td>
+            <td class="px-3 py-2">收到 Jessica 绩效数据后完成儒商工资表</td>
+            <td class="px-3 py-2">✅ 完成儒商工资表</td>
+            <td class="px-3 py-2 text-yellow-600">进行中</td>
+          </tr>
+
+          <!-- ===== 待开展 ===== -->
+          <tr class="border-b">
+            <td class="px-3 py-2 font-medium">男生宿舍退租</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">—</td>
+            <td class="px-3 py-2">完成男生宿舍退租事宜</td>
+            <td class="px-3 py-2">✅ 完成退租</td>
+            <td class="px-3 py-2 text-blue-600">待开展</td>
           </tr>
           <tr class="border-b">
-            <td class="px-3 py-2 font-medium">工资核算学习</td>
+            <td class="px-3 py-2 font-medium">律师专项费用</td>
             <td class="px-3 py-2">—</td>
             <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2">与琪琦学习工资表制作</td>
-            <td class="px-3 py-2">🟡 初步掌握</td>
-            <td class="px-3 py-2 text-yellow-600">计划中</td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-3 py-2 font-medium">行政接待</td>
-            <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2">✅ 完成银行拍摄及街道接待</td>
-            <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2 text-green-600">已闭环</td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-3 py-2 font-medium">车辆通行许可证</td>
-            <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2">✅ 完成续期及变更司机资料准备</td>
-            <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2">—</td>
-            <td class="px-3 py-2 text-green-600">已闭环</td>
+            <td class="px-3 py-2">晚上完成律师专项费用支付申请</td>
+            <td class="px-3 py-2">✅ 完成支付申请</td>
+            <td class="px-3 py-2 text-blue-600">待开展</td>
           </tr>
         </tbody>
       </table>
@@ -276,7 +319,7 @@
   </section>
 </section>
 
-<!-- ===== SOP（恢复附件查看功能）===== -->
+<!-- ===== SOP ===== -->
 <section class="bg-white rounded-xl shadow p-4 mb-6">
   <h2 class="font-bold text-lg mb-4">📘 标准作业基准（SOP）</h2>
 
@@ -322,14 +365,14 @@
 
   <div class="space-y-3 text-sm">
     <div class="p-3 border-l-4 border-red-500 bg-red-50">
-      <strong>玉枕社保 & 公积金购买滞后（高风险）</strong><br/>
-      影响范围：员工权益 & 合规性<br/>
-      处理计划：需在本周内完成玉枕的社保及公积金购买，避免断缴风险
+      <strong>儒商工资表依赖外部数据（高风险）</strong><br/>
+      影响范围：工资核算进度<br/>
+      处理计划：需主动跟进 Jessica 提供绩效数据，避免阻塞工资表制作
     </div>
     <div class="p-3 border-l-4 border-yellow-500 bg-yellow-50">
-      <strong>儒商公积金开户阻塞</strong><br/>
-      影响范围：儒商员工公积金缴存<br/>
-      处理计划：等待营业执照返回，第一时间办理开户
+      <strong>男生宿舍退租待推进</strong><br/>
+      影响范围：行政资产管理<br/>
+      处理计划：需本周内完成退租流程
     </div>
     <div class="p-3 border-l-4 border-yellow-500 bg-yellow-50">
       <strong>两地牌边检暂缓</strong><br/>
@@ -343,18 +386,17 @@
 <section class="bg-white rounded-xl shadow p-4 mb-6">
   <h2 class="font-bold text-lg mb-4">🤖 AI 管理总结（诊断版）</h2>
   <pre class="text-sm whitespace-pre-wrap leading-relaxed">
-✅ 第 4 周社保公积金月度购买已基本完成，云算力、星青年、新澳、晓麻雀、儒商、聚客社保已购买并上传系统；聚客、云算力、晓麻雀、星青年公积金已完成。行政接待及车辆许可证续期同步闭环。
+✅ 第 5 周已开启，上周（6.22-6.26）工作完成度较高，工资表制作、玉枕社保公积金购买、儒商公积金开户等均已闭环。
 
 ⚠️ 风险诊断：
-1. 玉枕社保/公积金尚未完成购买，存在断缴风险，需本周优先处理；
-2. 儒商公积金开户依赖营业执照返回，属外部阻塞，需持续跟进；
-3. 合同续签因李晴不在公司而延期，需主动约时间完成闭环。
+1. 儒商工资表依赖 Jessica 提供绩效数据，属外部阻塞，需主动跟进避免影响整体工资核算进度；
+2. 工资表修改需等待反馈，建议在周一上午主动催办；
+3. 男生宿舍退租及律师专项费用为本月新增行政事项，需注意时间节点。
 
-📅 下周建议：
-- 优先完成玉枕社保 & 公积金购买
-- 营业执照一到手，立即办理儒商公积金开户
-- 主动联系李晴完成合同续签
-- 推进6月考勤汇总及月度报销提交
+📅 本周建议：
+- 周一优先跟进工资表反馈及儒商绩效数据
+- 完成聚客/云算力/晓麻雀/玉枕工资表修改及系统提交审核
+- 推进男生宿舍退租及律师专项费用支付申请
   </pre>
 </section>
 
