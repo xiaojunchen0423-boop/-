@@ -1,782 +1,864 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <title>HR Weekly OS｜人事承接驾驶舱</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-[#f5f7fa] p-4 md:p-6">
-
-<!-- ===== 顶部 KPI ===== -->
-<section class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
-  <div class="bg-white rounded-xl shadow p-4">
-    <div class="text-sm text-gray-500">当前周次</div>
-    <div class="text-xl font-bold">第 6 / 8 周</div>
-  </div>
-  <div class="bg-white rounded-xl shadow p-4">
-    <div class="text-sm text-gray-500">承接完成率</div>
-    <div class="text-xl font-bold text-green-600">75%</div>
-  </div>
-  <div class="bg-white rounded-xl shadow p-4">
-    <div class="text-sm text-gray-500">本周状态</div>
-    <div class="text-xl font-bold text-blue-600">计划执行</div>
-  </div>
-  <div class="bg-white rounded-xl shadow p-4">
-    <div class="text-sm text-gray-500">SOP 完成数</div>
-    <div class="text-xl font-bold">2</div>
-  </div>
-  <div class="bg-white rounded-xl shadow p-4">
-    <div class="text-sm text-gray-500">风险数量</div>
-    <div class="text-xl font-bold text-red-500">2</div>
-  </div>
-</section>
-
-<!-- ===== 周次切换 ===== -->
-<section class="mb-6">
-  <div class="flex items-center gap-4">
-    <label class="text-sm font-medium">切换周次：</label>
-    <select id="weekSelector" class="border rounded px-3 py-1 text-sm">
-      <option value="week1">第 1 周（2025-06-02 ～ 06-08）</option>
-      <option value="week2">第 2 周（2025-06-09 ～ 06-15）</option>
-      <option value="week3">第 3 周（2025-06-16 ～ 06-22）</option>
-      <option value="week4">第 4 周（2025-06-23 ～ 06-29）</option>
-      <option value="week5">第 5 周（2025-06-23 ～ 06-29）</option>
-      <option value="week6" selected>第 6 周（2025-06-29 ～ 07-03）</option>
-    </select>
-  </div>
-</section>
-
-<!-- ===== 小工具跳转 ===== -->
-<section class="mb-6">
-  <h2 class="font-bold text-lg mb-4">🔗 小工具跳转</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <a href="https://xiaojunchen0423-boop.github.io/hr-notice-tool/" target="_blank" rel="noopener noreferrer"
-       class="block bg-white rounded-xl shadow p-4 hover:shadow-lg hover:-translate-y-1 transition">
-      <div class="flex items-center gap-3 mb-2">
-        <span class="text-2xl">📋</span>
-        <div>
-          <div class="font-semibold">人事行政通知工坊</div>
-          <div class="text-xs text-gray-500">HR Notice Studio V5</div>
-        </div>
-      </div>
-      <p class="text-sm text-gray-600">法定节假日、福利、温馨提示、物业、行政、自定义通知一键生成</p>
-    </a>
-
-    <a href="https://xiaojunchen0423-boop-boop.github.io/KOL-meeting/" target="_blank" rel="noopener noreferrer"
-       class="block bg-white rounded-xl shadow p-4 hover:shadow-lg hover:-translate-y-1 transition">
-      <div class="flex items-center gap-3 mb-2">
-        <span class="text-2xl">📊</span>
-        <div>
-          <div class="font-semibold">KOL 项目组会议纪要对比工具</div>
-          <div class="text-xs text-gray-500">Meeting Compare Tool</div>
-        </div>
-      </div>
-      <p class="text-sm text-gray-600">14 场会议 · 13 组对比 · 自动识别新增 / 消失结论与行动</p>
-    </a>
-  </div>
-</section>
-
-<!-- ===== 核心区域：三栏横向并排 ===== -->
-<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
-
-  <!-- 左侧：甘特图（占 6 列） -->
-  <div class="lg:col-span-6">
-    <section class="bg-white rounded-xl shadow p-4 h-full">
-      <h2 class="font-bold text-lg mb-4">📊 人事承接甘特图（第 1～8 周）</h2>
-
-      <div class="flex gap-1 mb-2 text-xs text-gray-500">
-        <div class="w-8 text-center">W1</div>
-        <div class="w-8 text-center">W2</div>
-        <div class="w-8 text-center">W3</div>
-        <div class="w-8 text-center">W4</div>
-        <div class="w-8 text-center">W5</div>
-        <div class="w-8 text-center">W6</div>
-        <div class="w-8 text-center">W7</div>
-        <div class="w-8 text-center">W8</div>
-      </div>
-
-      <div class="space-y-5 text-sm">
-        <div>
-          <div class="font-semibold mb-1">① 社保 & 公积金</div>
-          <div class="flex gap-1">
-            <div class="w-8 h-6 bg-green-600 rounded" title="W1 已完成"></div>
-            <div class="w-8 h-6 bg-green-500 rounded" title="W2 已完成"></div>
-            <div class="w-8 h-6 bg-blue-500 rounded" title="W3 办理账户"></div>
-            <div class="w-8 h-6 bg-blue-500 rounded" title="W4 月度购买"></div>
-            <div class="w-8 h-6 bg-green-300 rounded" title="W5 独立试运行"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-green-600 rounded" title="W8 验收"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="font-semibold mb-1">② 工资核算</div>
-          <div class="flex gap-1">
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-green-400 rounded" title="W2 部分完成"></div>
-            <div class="w-8 h-6 bg-blue-500 rounded" title="W3 学习"></div>
-            <div class="w-8 h-6 bg-blue-500 rounded" title="W4 继续学习"></div>
-            <div class="w-8 h-6 bg-green-300 rounded" title="W5 独立试运行"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-green-600 rounded" title="W8 验收"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="font-semibold mb-1">③ 异动 & 离职</div>
-          <div class="flex gap-1">
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-green-400 rounded" title="W2 部分完成"></div>
-            <div class="w-8 h-6 bg-blue-500 rounded" title="W3 学习"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-green-300 rounded" title="W7 独立试运行"></div>
-            <div class="w-8 h-6 bg-green-600 rounded" title="W8 验收"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="font-semibold mb-1">④ 两地牌事宜</div>
-          <div class="flex gap-1">
-            <div class="w-8 h-6 bg-green-600 rounded" title="W1 已完成"></div>
-            <div class="w-8 h-6 bg-yellow-400 rounded" title="W2 老板暂缓"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-            <div class="w-8 h-6 bg-gray-200 rounded"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-4 text-xs text-gray-500">
-        ■ 蓝色：学习交接　■ 浅绿：独立试运行　■ 深绿：验收通过　■ 黄色：暂缓
-      </div>
-    </section>
-  </div>
-
-  <!-- 中间：人事数据概览（占 3 列） -->
-  <div class="lg:col-span-3">
-    <section class="bg-white rounded-xl shadow p-4 h-full">
-      <h2 class="font-bold text-lg mb-4">👥 人事数据概览</h2>
-
-      <div class="mb-4">
-        <div class="text-sm font-medium mb-2">在职人数（总计 46 人）</div>
-        <div class="space-y-2 text-sm">
-          <div class="flex justify-between"><span>聚客</span><span class="font-bold">26 人</span></div>
-          <div class="flex justify-between"><span>玉枕</span><span class="font-bold">14 人</span></div>
-          <div class="flex justify-between"><span>云算力</span><span class="font-bold">6 人</span></div>
-        </div>
-      </div>
-
-      <hr class="my-4" />
-
-      <div class="space-y-3 text-sm">
-        <div class="flex justify-between"><span>本周离职</span><span class="font-bold text-red-600">1 人</span></div>
-        <div class="flex justify-between"><span>本周入职</span><span class="font-bold text-green-600">0 人</span></div>
-        <div class="flex justify-between"><span>考勤异常</span><span class="font-bold text-red-500">0 人</span></div>
-        <div class="flex justify-between"><span>待继续开展</span><span class="font-bold text-blue-600">两地牌边检</span></div>
-        <div class="flex justify-between">
-          <span>员工生日 / 入职周年提醒</span>
-          <span id="overviewMilestone" class="font-bold text-pink-600 cursor-pointer hover:underline" title="点击查看详情">
-            🎂 <span id="overviewBirthdayCount">0</span> 人 / 🏆 <span id="overviewAnniversaryCount">0</span> 人
-          </span>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- 右侧：年假计算器（占 3 列） -->
-  <div class="lg:col-span-3">
-    <section class="bg-white rounded-xl shadow p-4 h-full">
-      <h2 class="font-bold text-base mb-3">📐 年假计算器</h2>
-      <div class="space-y-3">
-        <div>
-          <label class="block text-xs font-medium mb-1">年度</label>
-          <select id="calcYear" class="border rounded px-2 py-1.5 w-full text-sm" onchange="updateStartDate()">
-            <option value="2024">2024 年</option>
-            <option value="2025" selected>2025 年</option>
-            <option value="2026">2026 年</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-xs font-medium mb-1">离职日期</label>
-          <input type="date" id="leaveDate" class="border rounded px-2 py-1.5 w-full text-sm" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium mb-1">全年年假天数</label>
-          <select id="annualLeave" class="border rounded px-2 py-1.5 w-full text-sm">
-            <option value="5">5 天</option>
-            <option value="10">10 天</option>
-            <option value="15">15 天</option>
-          </select>
-        </div>
-        <button onclick="calculateLeave()" class="w-full bg-blue-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
-          📊 计算
-        </button>
-        <div id="leaveResult" class="hidden mt-3 p-3 bg-blue-50 rounded-lg text-xs space-y-1"></div>
-      </div>
-    </section>
-  </div>
-
-</section>
-
-<!-- ===== 上周工作完成情况 ===== -->
-<section id="week6" class="week-content mb-6">
-  <section class="bg-white rounded-xl shadow p-4">
-    <h2 class="font-bold text-lg mb-4">📋 上周工作完成情况</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <!-- 人事模块 -->
-      <div class="bg-white border-l-4 border-blue-500 rounded-xl shadow p-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="font-bold text-blue-600 text-lg">👥 人事模块</h3>
-          <span class="text-sm font-semibold">100%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-          <div class="bg-blue-500 h-2 rounded-full" style="width: 100%;"></div>
-        </div>
-        <ul class="space-y-2 text-sm">
-          <li>✅ 离职人员（张春花）：已完成离职流程，资料已归档</li>
-          <li>✅ 香港劳工保完成了解，完成新保单成本组成计算及费用推进支付</li>
-          <li>✅ Ally总团队：降薪（黄彦、朱汉灵）薪资调整确认书已完成确认，待后续推进</li>
-          <li>✅ Ally总团队：薪资及假期结算（梁悦）休假申请已确认，薪资及假期结算确认书待Jessica确认</li>
-          <li>✅ 社保基数完成调整，社保待购买：聚客；社保公积金待购买：聚客、云算力</li>
-          <li>✅ 儒商社保减员：肖志敏（试用期不符合录用条件），减员原因【241丨用人单位因劳动者过错解除合同】</li>
-        </ul>
-      </div>
-
-      <!-- 行政模块 -->
-      <div class="bg-white border-l-4 border-green-500 rounded-xl shadow p-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="font-bold text-green-600 text-lg">🏢 行政模块</h3>
-          <span class="text-sm font-semibold">100%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-          <div class="bg-green-500 h-2 rounded-full" style="width: 100%;"></div>
-        </div>
-        <ul class="space-y-2 text-sm">
-          <li>✅ APEC：老板未制卡仅更换护照事宜已通过；公司提前制卡业务已提交待审核</li>
-          <li>✅ ETC 费用完成开票及整理交于出纳</li>
-          <li>✅ 完成通巴达费用支付申请</li>
-        </ul>
-      </div>
-
-      <!-- 工商模块 -->
-      <div class="bg-white border-l-4 border-orange-500 rounded-xl shadow p-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="font-bold text-orange-600 text-lg">🏛️ 工商模块</h3>
-          <span class="text-sm font-semibold">60%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-          <div class="bg-orange-500 h-2 rounded-full" style="width: 60%;"></div>
-        </div>
-        <ul class="space-y-2 text-sm">
-          <li>✅ 聚客海珠龙凤四：地址异常，已开具完税凭证，完成一般注销</li>
-          <li>✅ 聚客海珠龙凤五/从化城郊/花都花城：已提交简易注销公告，待公示结束</li>
-          <li>🟡 自牧荔湾石围塘一分：完税凭证已开具，因被撤销，只可前往现场处理</li>
-        </ul>
-      </div>
-
-      <!-- AI工具模块 -->
-      <div class="bg-white border-l-4 border-purple-500 rounded-xl shadow p-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="font-bold text-purple-600 text-lg">🤖 AI工具模块</h3>
-          <span class="text-sm font-semibold">90%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-          <div class="bg-purple-500 h-2 rounded-full" style="width: 90%;"></div>
-        </div>
-        <ul class="space-y-2 text-sm">
-          <li>✅ KOL 周会会议纪要总结工具已更新</li>
-          <li>✅ 周会汇报工具新增：员工生日/入司纪念日提醒、离职时年假计算器</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-</section>
-
-<!-- ===== 本周工作计划 ===== -->
-<section class="mb-6">
-  <section class="bg-white rounded-xl shadow p-4">
-    <h2 class="font-bold text-lg mb-4">📅 本周工作计划</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <!-- 人事模块 -->
-      <div class="bg-white border-l-4 border-blue-500 rounded-xl shadow p-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="font-bold text-blue-600 text-lg">👥 人事模块</h3>
-          <span class="text-sm font-semibold text-gray-500">待开展</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-          <div class="bg-blue-500 h-2 rounded-full" style="width: 0%;"></div>
-        </div>
-        <ul class="space-y-2 text-sm">
-          <li>📌 完成 7 月月度考勤工作</li>
-          <li>📌 完成人员资料签订：
-            <ul class="ml-4 mt-1 space-y-1 text-gray-700">
-              <li>① 薪资及假期结算（梁悦）</li>
-              <li>② 降薪（黄彦、朱汉灵）薪资调整确认书</li>
-            </ul>
-          </li>
-          <li>📌 完成聚客社保、玉枕社保公积金购买</li>
-          <li>📌 推进商务岗位（姚晓敏）跟进</li>
-          <li>📌 完成星青年公积金 Key 续费沟通（与陆总）</li>
-        </ul>
-      </div>
-
-      <!-- 行政模块 -->
-      <div class="bg-white border-l-4 border-green-500 rounded-xl shadow p-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="font-bold text-green-600 text-lg">🏢 行政模块</h3>
-          <span class="text-sm font-semibold text-gray-500">待开展</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-          <div class="bg-green-500 h-2 rounded-full" style="width: 0%;"></div>
-        </div>
-        <ul class="space-y-2 text-sm">
-          <li>📌 完成同福西租金支付</li>
-          <li>📌 完成月度报销提交</li>
-          <li>📌 完成下月度行政用品采购预算</li>
-        </ul>
-      </div>
-
-      <!-- 工商模块 -->
-      <div class="bg-white border-l-4 border-orange-500 rounded-xl shadow p-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="font-bold text-orange-600 text-lg">🏛️ 工商模块</h3>
-          <span class="text-sm font-semibold text-gray-500">待开展</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-          <div class="bg-orange-500 h-2 rounded-full" style="width: 0%;"></div>
-        </div>
-        <ul class="space-y-2 text-sm">
-          <li>📌 聚客海珠龙凤四：跟进老板签名进度</li>
-          <li>📌 自牧荔湾石围塘一分：必须前往荔湾区政务中心现场办理，目前完税证明已开出，转交琪琦处理</li>
-          <li>📌 比率 / 自牧 / 瑞锋：简易公告于 7 月 22 日正式结束，届时推进后续办理</li>
-        </ul>
-      </div>
-
-      <!-- AI工具模块 -->
-      <div class="bg-white border-l-4 border-purple-500 rounded-xl shadow p-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="font-bold text-purple-600 text-lg">🤖 AI工具模块</h3>
-          <span class="text-sm font-semibold text-gray-500">待开展</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-          <div class="bg-purple-500 h-2 rounded-full" style="width: 0%;"></div>
-        </div>
-        <ul class="space-y-2 text-sm">
-          <li>📌 本周暂无更新</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-</section>
-
-<!-- ===== 🎂 重要纪念日提醒模块 ===== -->
-<section class="bg-white rounded-xl shadow p-4 mb-6">
-  <div class="flex items-center justify-between mb-3">
-    <h2 class="font-bold text-base">🎂 重要纪念日提醒（未来 30 天）</h2>
-    <span id="milestoneRefresh" class="text-xs text-gray-400 cursor-pointer hover:text-blue-500" onclick="renderMilestones()">
-      🔄 刷新
-    </span>
-  </div>
-
-  <div id="milestoneSummary" class="flex gap-4 mb-3 text-sm"></div>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <div class="flex items-center gap-2 mb-2">
-        <span class="font-semibold text-sm text-pink-600">🎂 生日</span>
-        <span id="countBirthday" class="text-xs text-gray-400"></span>
-      </div>
-      <div id="birthdayList" class="space-y-1.5 text-sm"></div>
-    </div>
-
-    <div>
-      <div class="flex items-center gap-2 mb-2">
-        <span class="font-semibold text-sm text-amber-600">🏆 入职周年</span>
-        <span id="countAnniversary" class="text-xs text-gray-400"></span>
-      </div>
-      <div id="anniversaryList" class="space-y-1.5 text-sm"></div>
-    </div>
-  </div>
-
-  <div class="mt-3 text-xs text-gray-400">
-    ※ 数据来源：员工信息表 · 自动计算 · 含未来 30 天内即将到来的生日与入职周年
-  </div>
-</section>
-
-<!-- ===== SOP（✅ 本次唯一修改：改为直接下载 PDF）===== -->
-<section class="bg-white rounded-xl shadow p-4 mb-6">
-  <h2 class="font-bold text-lg mb-4">📘 标准作业基准（SOP）</h2>
-
-  <details class="mb-4 border rounded-lg p-3">
-    <summary class="cursor-pointer font-semibold">
-      住房公积金月度缴存 SOP（V1.1）✅ 已交付
-    </summary>
-    <div class="mt-3 text-sm space-y-2">
-      <p><strong>关键节点：</strong></p>
-      <ul class="list-disc ml-5">
-        <li>每月 10 日：核对转正 / 离职名单</li>
-        <li>每月 15 日：完成增减员</li>
-        <li>每月 20 日前：提交汇缴申请</li>
-        <li>每月 25 日前：下载完税凭证归档</li>
-      </ul>
-      <a href="住房公积金月度缴存操作SOP_V1.1.pdf"
-         download="住房公积金月度缴存操作SOP_V1.1.pdf"
-         class="inline-block mt-2 px-3 py-1 bg-blue-100 text-blue-700 rounded text-xs hover:bg-blue-200 transition cursor-pointer">
-        📎 下载完整 SOP 文件（PDF）
-      </a>
-    </div>
-  </details>
-
-  <details class="border rounded-lg p-3">
-    <summary class="cursor-pointer font-semibold">
-      社会保险月度申报及异动操作 SOP（V1.0）✅ 已交付
-    </summary>
-    <div class="mt-3 text-sm space-y-2">
-      <p><strong>关键节点：</strong></p>
-      <ul class="list-disc ml-5">
-        <li>每月 10 日：核对入离职名单</li>
-        <li>每月 15 日：完成增减员及基数调整</li>
-        <li>每月 22 日前：完成社保费申报</li>
-      </ul>
-      <a href="社会保险月度申报及异动操作SOP_V1.0.pdf"
-         download="社会保险月度申报及异动操作SOP_V1.0.pdf"
-         class="inline-block mt-2 px-3 py-1 bg-blue-100 text-blue-700 rounded text-xs hover:bg-blue-200 transition cursor-pointer">
-        📎 下载完整 SOP 文件（PDF）
-      </a>
-    </div>
-  </details>
-</section>
-
-<!-- ===== 留存资料（内嵌版·不动）===== -->
-<section class="bg-white rounded-xl shadow p-4 mb-6">
-  <h2 class="font-bold text-lg mb-4">📂 留存资料</h2>
-
-  <div class="space-y-3 text-sm">
-    <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 transition cursor-pointer"
-         onclick="downloadFile('socialSecurityXls')">
-      <span class="text-lg">📄</span>
-      <span class="text-blue-700 hover:underline font-medium">
-        2026年7月社保基数调整（最终调整数据版）0715.xls
-      </span>
-    </div>
-    <div class="text-xs text-gray-400 pl-7">
-      ※ 点击即下载 · 内容由页面内嵌数据生成 · 无需额外文件
-    </div>
-  </div>
-</section>
-
-<!-- ===== 风险管理 ===== -->
-<section class="bg-white rounded-xl shadow p-4 mb-6">
-  <h2 class="font-bold text-lg mb-4">⚠️ 风险管理</h2>
-
-  <div class="space-y-3 text-sm">
-    <div class="p-3 border-l-4 border-red-500 bg-red-50">
-      <strong>许俊曦实习入职跟进（中风险）</strong><br/>
-      影响范围：人员到岗<br/>
-      处理计划：资料已准备齐全，下周一（7.7）完成入职安排
-    </div>
-    <div class="p-3 border-l-4 border-yellow-500 bg-yellow-50">
-      <strong>两地牌边检暂缓</strong><br/>
-      影响范围：车辆通行效率<br/>
-      处理计划：等待老板进一步指示，适时重启
-    </div>
-  </div>
-</section>
-
-<!-- ===== AI 管理总结 ===== -->
-<section class="bg-white rounded-xl shadow p-4 mb-6">
-  <h2 class="font-bold text-lg mb-4">🤖 AI 管理总结（诊断版）</h2>
-  <pre class="text-sm whitespace-pre-wrap leading-relaxed">
-✅ 第 6 周已开启，工资表制作及系统提交已基本完成，核心工作重心向审计盖章及分公司注销转移。
-
-⚠️ 风险预警：
-1. 聚客分公司注销需尽快提交简易注销公告，避免影响后续工商合规；
-2. Jac-co 实习生协议涉及2人，需跟进资料收取及盖章进度。
-
-📅 本周执行建议：
-- 优先完成云算力审计资料盖章，消除审计阻塞
-- 推进聚客分公司注销公告提交
-- 完成香港工资表及 ETC 发票交付，确保财务流程闭环
-  </pre>
-</section>
-
-<!-- ===== JS 逻辑（仅保留社保表下载，删除 sop1/sop2）===== -->
-<script>
-/* ========= 内嵌文件下载引擎（仅用于社保基数表） ========= */
-const EMBED_FILES = {
-  socialSecurityXls: 'dynamic'
-};
-
-function downloadFile(key) {
-  const item = EMBED_FILES[key];
-  if (!item || key !== 'socialSecurityXls') return;
-
-  const xlsContent = `<html xmlns:o="urn:schemas-microsoft-com:office:office"
-        xmlns:x="urn:schemas-microsoft-com:office:excel"
-        xmlns="http://www.w3.org/TR/REC-html40">
-<head>
-<meta charset="utf-8">
-<title>2026年7月社保基数调整（最终调整数据版）0715</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KOL项目组会议纪要对比工具</title>
 <style>
-table{border-collapse:collapse;font-size:11px;width:100%;}
-th,td{border:1px solid #999;padding:3px 5px;text-align:center;}
-th{background:#4472C4;color:#fff;font-weight:bold;}
-tr:nth-child(even){background:#f2f2f2;}
+  :root {
+    --primary: #2563EB;
+    --primary-light: #DBEAFE;
+    --success: #16A34A;
+    --warning: #D97706;
+    --danger: #DC2626;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-500: #6B7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-900);
+    line-height: 1.6;
+  }
+  .header {
+    background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 100%);
+    color: #fff;
+    padding: 24px 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  .header h1 { font-size: 22px; font-weight: 700; }
+  .header p { font-size: 13px; opacity: .85; margin-top: 4px; }
+
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px 16px; }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex; gap: 16px; padding: 14px 24px;
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    margin-bottom: 20px; flex-wrap: wrap; align-items: center;
+  }
+  .stats-bar .stat { font-size: 13px; color: var(--gray-700); }
+  .stats-bar .stat strong { color: var(--primary); font-size: 18px; }
+
+  /* Date navigation bar */
+  .date-nav-bar {
+    display: flex; align-items: center; gap: 8px; padding: 14px 24px;
+    background: #fff; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    margin-bottom: 24px; flex-wrap: wrap; overflow-x: auto;
+  }
+  .date-nav-bar .label { font-size: 13px; color: var(--gray-500); font-weight: 600; margin-right: 4px; white-space: nowrap; }
+  .date-nav-btn {
+    padding: 6px 14px; border-radius: 8px; border: 1px solid var(--gray-200);
+    background: #fff; font-size: 12px; cursor: pointer; transition: all .2s; white-space: nowrap;
+    color: var(--gray-700);
+  }
+  .date-nav-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+  .date-nav-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); font-weight: 600; }
+
+  /* Comparison Section */
+  .comparison-section {
+    background: #fff; border-radius: 12px; padding: 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 24px;
+  }
+  .comparison-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
+  }
+  .comparison-header h2 { font-size: 18px; }
+  .nav-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+  .nav-tab {
+    padding: 8px 14px; border-radius: 8px; border: 1px solid var(--gray-200);
+    background: #fff; font-size: 12px; cursor: pointer; transition: all .2s; white-space: nowrap;
+  }
+  .nav-tab:hover { border-color: var(--primary); color: var(--primary); }
+  .nav-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  /* Compare Grid */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .compare-panel { border: 1px solid var(--gray-200); border-radius: 10px; overflow: hidden; }
+  .panel-header {
+    padding: 14px 18px; font-weight: 700; font-size: 15px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .panel-header .badge { font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 10px; }
+  .panel-old .panel-header { background: #FEF3C7; color: #92400E; }
+  .panel-old .badge { background: #FDE68A; color: #78350F; }
+  .panel-new .panel-header { background: #D1FAE5; color: #065F46; }
+  .panel-new .badge { background: #A7F3D0; color: #064E3B; }
+  .panel-body { padding: 18px; font-size: 13.5px; line-height: 1.8; }
+
+  .section-block { margin-bottom: 18px; }
+  .section-block h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 2px solid var(--gray-100); }
+  .section-block ul, .section-block ol { padding-left: 20px; }
+  .section-block li { margin-bottom: 4px; }
+  .section-block table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+  .section-block th, .section-block td { border: 1px solid var(--gray-200); padding: 8px 10px; text-align: left; vertical-align: top; }
+  .section-block th { background: var(--gray-50); font-weight: 600; }
+
+  /* Diff */
+  .diff-new { background: #DCFCE7; padding: 1px 4px; border-radius: 3px; }
+  .diff-removed { background: #FEE2E2; padding: 1px 4px; border-radius: 3px; text-decoration: line-through; }
+  .diff-changed { background: #FEF3C7; padding: 1px 4px; border-radius: 3px; }
+
+  /* Summary bar */
+  .summary-bar { display: flex; gap: 20px; padding: 14px 18px; background: var(--gray-50); border-radius: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .summary-item { font-size: 13px; color: var(--gray-700); }
+  .summary-item strong { color: var(--gray-900); }
+
+  /* Diff section */
+  .diff-section { margin-top:20px; border-top:2px solid var(--gray-200); padding-top:20px; }
+  .diff-section h3 { font-size:16px; margin-bottom:12px; }
+
+  /* Full content toggle */
+  .full-content-toggle { margin-top: 12px; }
+  .full-content-toggle button {
+    font-size: 12px; color: var(--primary); background: none; border: none;
+    cursor: pointer; text-decoration: underline;
+  }
+  .full-content { display: none; margin-top: 8px; max-height: 400px; overflow: auto;
+    padding: 12px; background: var(--gray-50); border-radius: 8px; font-size: 12px;
+    white-space: pre-wrap; line-height: 1.7; color: var(--gray-700);
+  }
+
+  .no-data { text-align: center; padding: 40px; color: var(--gray-500); font-size: 14px; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .compare-grid { grid-template-columns: 1fr; }
+    .header { padding: 16px; }
+    .container { padding: 12px 8px; }
+    .comparison-section { padding: 16px; }
+    .timeline-bar { padding: 12px 16px; }
+    .stats-bar { padding: 12px 16px; }
+  }
 </style>
 </head>
 <body>
-<h3>聚客社保基数调整汇总表（扣除年终奖版本）</h3>
-<table>
-<tr><th>序号</th><th>姓名</th><th>成本归属</th><th>原缴费工资</th><th>公司合计(原)</th><th>个人合计(原)</th><th>新缴费工资</th><th>公司合计(新)</th><th>个人合计(新)</th><th>公司差异</th><th>个人差异</th></tr>
-<tr><td>2</td><td>陈晓筠</td><td>苏总</td><td>5000</td><td>1358.63</td><td>575.48</td><td>4916.67</td><td>1357.80</td><td>575.31</td><td>-0.83</td><td>-0.17</td></tr>
-<tr><td>3</td><td>张春花</td><td></td><td>6500</td><td>1550.25</td><td>663.00</td><td>6500.00</td><td>1550.25</td><td>663.00</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>4</td><td>劳琪琦</td><td></td><td>7500</td><td>1788.75</td><td>765.00</td><td>7541.67</td><td>1798.69</td><td>769.25</td><td>9.94</td><td>4.25</td></tr>
-<tr><td>5</td><td>姚婉婷</td><td></td><td>5000</td><td>1358.63</td><td>575.48</td><td>6750.67</td><td>1610.03</td><td>688.57</td><td>251.40</td><td>113.09</td></tr>
-<tr><td>6</td><td>覃洁莹</td><td></td><td>13000</td><td>3100.50</td><td>1326.00</td><td>13000.00</td><td>3100.50</td><td>1326.00</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>7</td><td>黄伟文</td><td></td><td>10000</td><td>2385.00</td><td>1020.00</td><td>10000.00</td><td>2385.00</td><td>1020.00</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>8</td><td>刘年新</td><td></td><td>14750</td><td>3517.88</td><td>1504.50</td><td>15791.67</td><td>3766.31</td><td>1610.75</td><td>248.43</td><td>106.25</td></tr>
-<tr><td>9</td><td>梁詠臻</td><td></td><td>6000</td><td>1447.03</td><td>616.68</td><td>6045.28</td><td>1454.73</td><td>620.39</td><td>7.70</td><td>3.71</td></tr>
-<tr><td>10</td><td>程梦颖</td><td></td><td>16000</td><td>3816.00</td><td>1632.00</td><td>24339.53</td><td>5804.98</td><td>2482.63</td><td>1988.98</td><td>850.63</td></tr>
-<tr><td>11</td><td>梁剑锋</td><td>Ally总</td><td>3158</td><td>1340.21</td><td>571.80</td><td>3158.83</td><td>1340.22</td><td>571.80</td><td>0.01</td><td>0.00</td></tr>
-<tr><td>12</td><td>李晴</td><td></td><td>5800</td><td>1413.03</td><td>600.28</td><td>5800.00</td><td>1413.03</td><td>600.28</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>13</td><td>陈凯俊</td><td></td><td>7500</td><td>1788.75</td><td>765.00</td><td>7500.00</td><td>1788.75</td><td>765.00</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>14</td><td>吴慧剑</td><td></td><td>6800</td><td>1621.80</td><td>693.60</td><td>6800.00</td><td>1621.80</td><td>693.60</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>15</td><td>李吉元</td><td></td><td>8000</td><td>1908.00</td><td>816.00</td><td>9416.67</td><td>2245.88</td><td>960.50</td><td>337.88</td><td>144.50</td></tr>
-<tr><td>16</td><td>洪庭燊</td><td></td><td>7500</td><td>1788.75</td><td>765.00</td><td>7416.67</td><td>1768.88</td><td>756.50</td><td>-19.88</td><td>-8.50</td></tr>
-<tr><td>17</td><td>潘文杰</td><td></td><td>4250</td><td>1351.13</td><td>573.98</td><td>4000.00</td><td>1348.63</td><td>573.48</td><td>-2.50</td><td>-0.50</td></tr>
-<tr><td>18</td><td>刘佳</td><td></td><td>8000</td><td>1908.00</td><td>816.00</td><td>13000.00</td><td>3100.50</td><td>1326.00</td><td>1192.50</td><td>510.00</td></tr>
-<tr><td>19</td><td>蔡荣家</td><td></td><td>8000</td><td>1908.00</td><td>816.00</td><td>9000.00</td><td>2146.50</td><td>918.00</td><td>238.50</td><td>102.00</td></tr>
-<tr><td>20</td><td>黄至倩</td><td></td><td>4750</td><td>1356.13</td><td>574.98</td><td>4500.00</td><td>1353.63</td><td>574.48</td><td>-2.50</td><td>-0.50</td></tr>
-<tr><td>21</td><td>朱汉灵</td><td></td><td>8000</td><td>1908.00</td><td>816.00</td><td>14800.00</td><td>3529.80</td><td>1509.60</td><td>1621.80</td><td>693.60</td></tr>
-<tr><td>22</td><td>郭子健</td><td></td><td>4758</td><td>1356.21</td><td>575.00</td><td>4466.67</td><td>1353.30</td><td>574.41</td><td>-2.91</td><td>-0.59</td></tr>
-<tr><td>23</td><td>周芷颖</td><td></td><td>3950</td><td>1348.13</td><td>573.38</td><td>3933.33</td><td>1347.96</td><td>573.35</td><td>-0.17</td><td>-0.03</td></tr>
-<tr><td>24</td><td>梁悦</td><td></td><td>7011</td><td>1672.12</td><td>715.12</td><td>7012.68</td><td>1672.52</td><td>715.29</td><td>0.40</td><td>0.17</td></tr>
-<tr><td>25</td><td>陈腾龙</td><td></td><td>8000</td><td>1908.00</td><td>816.00</td><td>12000.00</td><td>2862.00</td><td>1224.00</td><td>954.00</td><td>408.00</td></tr>
-<tr><td>26</td><td>冯晓莹</td><td></td><td>8000</td><td>1908.00</td><td>816.00</td><td>10448.23</td><td>2491.90</td><td>1065.72</td><td>583.90</td><td>249.72</td></tr>
-<tr><td>27</td><td>黄彦</td><td></td><td>8000</td><td>1908.00</td><td>816.00</td><td>17137.51</td><td>4087.30</td><td>1748.03</td><td>2179.30</td><td>932.03</td></tr>
-<tr><td>28</td><td>吴迪</td><td>挂靠</td><td>3000</td><td>1338.63</td><td>571.48</td><td>3000.00</td><td>1338.63</td><td>571.48</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>29</td><td>江山</td><td></td><td>3000</td><td>1338.63</td><td>571.48</td><td>4000.00</td><td>1348.63</td><td>573.48</td><td>10.00</td><td>2.00</td></tr>
-<tr><td>30</td><td>陈玉茹</td><td></td><td>3000</td><td>1338.63</td><td>571.48</td><td>3000.00</td><td>1338.63</td><td>571.48</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>31</td><td>易宇明</td><td>新增</td><td>0</td><td>0</td><td>0</td><td>8000.00</td><td>1908.00</td><td>816.00</td><td>1908.00</td><td>816.00</td></tr>
-</table>
-<h3 style="margin-top:20px;">玉枕社保基数调整汇总表</h3>
-<table>
-<tr><th>序号</th><th>姓名</th><th>原缴费工资</th><th>公司合计(原)</th><th>个人合计(原)</th><th>新缴费工资</th><th>公司合计(新)</th><th>个人合计(新)</th><th>公司差异</th><th>个人差异</th></tr>
-<tr><td>1</td><td>刘志彬</td><td>4000</td><td>1348.63</td><td>573.48</td><td>4000.00</td><td>1348.63</td><td>573.48</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>2</td><td>杨健伟</td><td>8000</td><td>1908.00</td><td>816.00</td><td>8000.00</td><td>1908.00</td><td>816.00</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>3</td><td>颜顺民</td><td>6200</td><td>1481.03</td><td>633.08</td><td>8005.56</td><td>1909.33</td><td>816.57</td><td>428.30</td><td>183.49</td></tr>
-<tr><td>4</td><td>陈戊昭</td><td>18000</td><td>4293.00</td><td>1836.00</td><td>18723.36</td><td>4465.52</td><td>1909.78</td><td>172.52</td><td>73.78</td></tr>
-<tr><td>5</td><td>卢伟涛</td><td>5500</td><td>1363.63</td><td>576.48</td><td>7031.62</td><td>1677.04</td><td>717.23</td><td>313.41</td><td>140.75</td></tr>
-<tr><td>6</td><td>梁永宁</td><td>5000</td><td>1358.63</td><td>575.48</td><td>6418.06</td><td>1530.71</td><td>654.64</td><td>172.08</td><td>79.16</td></tr>
-<tr><td>7</td><td>李国栋</td><td>6200</td><td>1481.03</td><td>633.08</td><td>9009.11</td><td>2148.67</td><td>918.93</td><td>667.64</td><td>285.85</td></tr>
-<tr><td>8</td><td>戴春妍</td><td>8000</td><td>1908.00</td><td>816.00</td><td>14665.78</td><td>3497.79</td><td>1495.91</td><td>1589.79</td><td>679.91</td></tr>
-<tr><td>9</td><td>谢若楠</td><td>6000</td><td>1447.03</td><td>616.68</td><td>8233.49</td><td>1963.69</td><td>839.82</td><td>516.66</td><td>223.14</td></tr>
-<tr><td>10</td><td>区世杰</td><td>5000</td><td>1358.63</td><td>575.48</td><td>5773.47</td><td>1408.52</td><td>598.10</td><td>49.89</td><td>22.62</td></tr>
-<tr><td>11</td><td>叶浩然</td><td>10000</td><td>2385.00</td><td>1020.00</td><td>10879.00</td><td>2594.64</td><td>1109.66</td><td>209.64</td><td>89.66</td></tr>
-<tr><td>12</td><td>黎炜伦</td><td>8000</td><td>1908.00</td><td>816.00</td><td>9324.13</td><td>2223.81</td><td>951.06</td><td>315.81</td><td>135.06</td></tr>
-<tr><td>13</td><td>伍定龙</td><td>7000</td><td>1669.50</td><td>714.00</td><td>8034.50</td><td>1916.23</td><td>819.52</td><td>246.73</td><td>105.52</td></tr>
-</table>
-<h3 style="margin-top:20px;">儒商社保基数调整汇总表</h3>
-<table>
-<tr><th>序号</th><th>姓名</th><th>成本归属</th><th>原缴费工资</th><th>公司合计(原)</th><th>个人合计(原)</th><th>新缴费工资</th><th>公司合计(新)</th><th>个人合计(新)</th><th>公司差异</th><th>个人差异</th></tr>
-<tr><td>1</td><td>潘勇</td><td>挂靠</td><td>3000</td><td>1338.63</td><td>571.48</td><td>3000.00</td><td>1338.63</td><td>571.48</td><td>0.00</td><td>0.00</td></tr>
-<tr><td>2</td><td>李家乐</td><td>Ally总</td><td>3000</td><td>1338.63</td><td>571.48</td><td>8000.00</td><td>1908.00</td><td>816.00</td><td>569.37</td><td>244.52</td></tr>
-<tr><td>3</td><td>郑亭慧</td><td></td><td>3000</td><td>1338.63</td><td>571.48</td><td>9000.00</td><td>2146.50</td><td>918.00</td><td>807.87</td><td>346.52</td></tr>
-</table>
-<h3 style="margin-top:20px;">云算力社保基数调整汇总表</h3>
-<table>
-<tr><th>序号</th><th>姓名</th><th>成本归属</th><th>原缴费工资</th><th>公司合计(原)</th><th>个人合计(原)</th><th>新缴费工资</th><th>公司合计(新)</th><th>个人合计(新)</th><th>公司差异</th><th>个人差异</th><th>调整原因</th></tr>
-<tr><td>1</td><td>曾晓峰</td><td>Jacco总</td><td>10000</td><td>2385.00</td><td>1020.00</td><td>10025.00</td><td>2390.96</td><td>1022.55</td><td>5.96</td><td>2.55</td><td>近12月平均工资与原基础存在差异</td></tr>
-<tr><td>2</td><td>蔡兆佳</td><td></td><td>8500</td><td>2027.25</td><td>867.00</td><td>9358.33</td><td>2231.96</td><td>954.55</td><td>204.71</td><td>87.55</td><td></td></tr>
-<tr><td>3</td><td>薛臻蔚</td><td></td><td>6500</td><td>1550.25</td><td>663.00</td><td>6945.83</td><td>1656.58</td><td>708.47</td><td>106.33</td><td>45.47</td><td></td></tr>
-<tr><td>4</td><td>黄榆</td><td></td><td>10000</td><td>2385.00</td><td>1020.00</td><td>10675.00</td><td>2545.99</td><td>1088.85</td><td>160.99</td><td>68.85</td><td></td></tr>
-<tr><td>5</td><td>颜纯漫</td><td></td><td>2500</td><td>5.00</td><td>0.00</td><td>2500.00</td><td>5.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>非全日制人员不参与调整</td></tr>
-<tr><td>6</td><td>苏颖欣</td><td>苏总</td><td>20000</td><td>4770.00</td><td>2040.00</td><td>20000.00</td><td>4770.00</td><td>2040.00</td><td>0.00</td><td>0.00</td><td>基数无变化，无需调整</td></tr>
-<tr><td>7</td><td>王瑾</td><td></td><td>10000</td><td>2385.00</td><td>1020.00</td><td>10433.33</td><td>2488.35</td><td>1064.20</td><td>103.35</td><td>44.20</td><td>近12月平均工资与原基础存在差异</td></tr>
-<tr><td>8</td><td>徐玲</td><td>挂靠</td><td>9000</td><td>2146.50</td><td>918.00</td><td>9000.00</td><td>2146.50</td><td>918.00</td><td>0.00</td><td>0.00</td><td>挂靠人员保持原基础购买</td></tr>
-</table>
-<h3 style="margin-top:20px;">晓麻雀社保基数调整汇总表</h3>
-<table>
-<tr><th>序号</th><th>姓名</th><th>原缴费工资</th><th>公司合计(原)</th><th>个人合计(原)</th><th>新缴费工资</th><th>公司合计(新)</th><th>个人合计(新)</th><th>公司差异</th><th>个人差异</th><th>调整原因</th></tr>
-<tr><td>1</td><td>黄文爱</td><td>8267</td><td>1988.22</td><td>843.23</td><td>8353.23</td><td>1992.25</td><td>852.03</td><td>4.03</td><td>8.80</td><td>近12月平均工资与原基础存在差异</td></tr>
-</table>
-</body>
-</html>`;
-  const blob = new Blob([xlsContent], {
-    type: 'application/vnd.ms-excel;charset=utf-8'
-  });
-  triggerDownload(blob, '2026年7月社保基数调整（最终调整数据版）0715.xls');
-}
 
-function triggerDownload(blob, filename) {
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(() => {
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }, 100);
-}
+<div class="header">
+  <h1>📋 KOL项目组会议纪要对比工具</h1>
+  <p>所有会议纪要已内置，打开即可预览和对比。最新一次 vs 最近一次，逐对对比。</p>
+</div>
 
-// ===== 员工信息 =====
-const STAFF_DATA = [
-  {"name":"刘年新","birthday":"12-29","joinDate":"2012-03-01","seniority":14},
-  {"name":"程梦颖","birthday":"07-01","joinDate":"2021-04-06","seniority":5},
-  {"name":"李吉元","birthday":"11-27","joinDate":"2021-07-12","seniority":4},
-  {"name":"劳琪琦","birthday":"08-24","joinDate":"2021-07-14","seniority":4},
-  {"name":"梁詠臻","birthday":"09-10","joinDate":"2021-08-26","seniority":4},
-  {"name":"黄彦","birthday":"08-06","joinDate":"2021-12-27","seniority":4},
-  {"name":"朱汉灵","birthday":"04-01","joinDate":"2022-01-04","seniority":4},
-  {"name":"吴慧剑","birthday":"03-10","joinDate":"2022-01-04","seniority":4},
-  {"name":"潘文杰","birthday":"05-21","joinDate":"2022-01-04","seniority":4},
-  {"name":"陈凯俊","birthday":"05-17","joinDate":"2022-03-01","seniority":4},
-  {"name":"冯晓莹","birthday":"07-22","joinDate":"2022-05-11","seniority":4},
-  {"name":"黄至倩","birthday":"02-22","joinDate":"2022-05-12","seniority":4},
-  {"name":"李晴","birthday":"10-03","joinDate":"2022-07-12","seniority":3},
-  {"name":"刘佳","birthday":"04-19","joinDate":"2022-12-01","seniority":3},
-  {"name":"洪庭燊","birthday":"11-16","joinDate":"2023-02-14","seniority":3},
-  {"name":"张春花","birthday":"03-18","joinDate":"2023-07-18","seniority":2},
-  {"name":"梁悦","birthday":"12-27","joinDate":"2024-02-19","seniority":2},
-  {"name":"周芷颖","birthday":"02-20","joinDate":"2024-02-28","seniority":2},
-  {"name":"姚婉婷","birthday":"08-12","joinDate":"2024-03-04","seniority":2},
-  {"name":"郭子健","birthday":"01-02","joinDate":"2024-05-08","seniority":2},
-  {"name":"陈晓筠","birthday":"04-23","joinDate":"2024-11-04","seniority":1},
-  {"name":"黄伟文","birthday":"06-13","joinDate":"2025-05-06","seniority":1},
-  {"name":"覃洁莹","birthday":"06-24","joinDate":"2025-08-01","seniority":0},
-  {"name":"陈腾龙","birthday":"06-01","joinDate":"2025-09-10","seniority":0},
-  {"name":"蔡荣家","birthday":"02-23","joinDate":"2025-10-09","seniority":0},
-  {"name":"苏颖欣","birthday":"05-26","joinDate":"2023-03-01","seniority":3},
-  {"name":"黄榆","birthday":"01-01","joinDate":"2020-07-13","seniority":5},
-  {"name":"董广龙","birthday":"01-31","joinDate":"2021-04-14","seniority":5},
-  {"name":"王瑾","birthday":"02-10","joinDate":"2024-04-22","seniority":2},
-  {"name":"曾晓峰","birthday":"09-16","joinDate":"2023-11-01","seniority":2},
-  {"name":"蔡兆佳","birthday":"11-14","joinDate":"2025-07-01","seniority":1},
-  {"name":"薛臻蔚","birthday":"09-15","joinDate":"2025-07-01","seniority":1},
-  {"name":"陈戊昭","birthday":"03-23","joinDate":"2022-03-01","seniority":4},
-  {"name":"戴春妍","birthday":"01-07","joinDate":"2022-06-27","seniority":4},
-  {"name":"黎炜伦","birthday":"03-18","joinDate":"2024-03-01","seniority":2},
-  {"name":"卢伟涛","birthday":"04-14","joinDate":"2024-03-01","seniority":2},
-  {"name":"伍定龙","birthday":"06-04","joinDate":"2024-03-01","seniority":2},
-  {"name":"叶浩然","birthday":"06-24","joinDate":"2024-03-04","seniority":2},
-  {"name":"梁永宁","birthday":"02-20","joinDate":"2024-03-26","seniority":2},
-  {"name":"区世杰","birthday":"05-07","joinDate":"2024-07-01","seniority":2},
-  {"name":"谢若楠","birthday":"07-09","joinDate":"2023-10-08","seniority":2},
-  {"name":"李国栋","birthday":"09-17","joinDate":"2025-05-01","seniority":1},
-  {"name":"颜顺民","birthday":"04-06","joinDate":"2025-05-01","seniority":1},
-  {"name":"陈卓杰","birthday":"04-04","joinDate":"2025-01-01","seniority":1},
-  {"name":"杨健伟","birthday":"03-20","joinDate":"2025-06-01","seniority":1},
-  {"name":"刘志彬","birthday":"08-23","joinDate":"2025-08/01","seniority":0}
+<div class="container">
+
+  <!-- Stats Bar -->
+  <div class="stats-bar" id="statsBar">
+    <span class="stat">收录会议：<strong id="statMeetings">0</strong> 份</span>
+    <span class="stat">对比组数：<strong id="statPairs">0</strong> 组</span>
+    <span class="stat">时间跨度：<strong id="statSpan">-</strong></span>
+  </div>
+
+  <!-- Date Navigation -->
+  <div class="date-nav-bar" id="dateNavBar">
+    <span class="label">📅 已收录 16 场会议 · 时间跨度：2月27日 – 7月24日</span>
+  </div>
+
+  <!-- Comparison Section -->
+  <div class="comparison-section">
+    <div class="comparison-header">
+      <h2>📊 相邻会议纪要对比</h2>
+      <div class="nav-tabs" id="navTabs"></div>
+    </div>
+    <div id="comparisonContent"></div>
+  </div>
+
+</div>
+
+<script>
+// ============ All meeting data embedded inline ============
+const meetings = [
+  // ===== 1: 260227 =====
+  {
+    "id": "260227",
+    "date": new Date(2026, 1, 27),
+    "title": "KOL项目组周会纪要260227",
+    "conclusions": [
+      "三大产品按计划推进，本周完成数据审查与AI客服评估",
+      "50个KOL客户必须分层，集中资源投入高价值客户",
+      "志斌必须掌握AI工具，伟文持续手把手指导",
+      "探索内容裂变策略（同一核心故事多平台表达），小规模尝试跨平台",
+      "KOL小程序新增板块（差多少播放量达到YPP，达到后实际盈利是多少）"
+    ],
+    "topics": [
+      "产品进展（后台统计/AI客服/小程序）",
+      "KOL客户分层策略",
+      "团队管理(志斌AI使用)",
+      "跨平台探索与内容裂变"
+    ],
+    "actions": [
+      {"task": "Dashboard数据审查与达人分层", "who": "Rachel、伟文、老板", "when": "本周内", "pri": "高"},
+      {"task": "AI客服测试结果评估", "who": "志斌", "when": "今日/明日", "pri": "高"},
+      {"task": "催促接近YPP的达人更新", "who": "志斌", "when": "本周内", "pri": "高"},
+      {"task": "KOL小程序开发完成", "who": "Rachel", "when": "3月7日", "pri": "中"},
+      {"task": "志斌AI工具使用指导", "who": "伟文", "when": "持续进行", "pri": "中"},
+      {"task": "跨平台小规模测试", "who": "Rachel", "when": "待定", "pri": "低"}
+    ],
+    "fullText": "会议主题：年前客户计划工作进展汇报\n参会人员：Rachel、伟文、老板、晓筠\n\n核心结论：\n1. 三大产品按计划推进，本周完成数据审查与AI客服评估\n2. 50个KOL客户必须分层，集中资源投入高价值客户\n3. 志斌必须掌握AI工具，伟文持续手把手指导\n4. 探索内容裂变策略，小规模尝试跨平台\n5. KOL小程序新增板块\n\n产品进展：\n- 后台统计系统：开发中\n- AI客服：测试中\n- KOL小程序：开发中，3月7日前完成\n\nKOL客户分层策略：\n- 50个KOL差异巨大，头部接近YPP\n- 执行分层运营，重点投入高潜力客户"
+  },
+  // ===== 2: 0306 =====
+  {
+    "id": "0306",
+    "date": new Date(2026, 2, 6),
+    "title": "KOL项目组周会纪要0306",
+    "conclusions": [
+      "KOL小程序完成设计提升与真实数据接入，MVP版本拟下周落地并选取9个头部达人试用",
+      "Dashboard完成信息架构重构，聚焦头部达人运营，优先推动高盈利希望的16个达人工作",
+      "50个KOL中约20%的YPD具备收益潜力，达人海外变现以广告、YouTube小商品挂载为主",
+      "确定三大挖客渠道：AI内容生产、社交互动工具、出海信息爬取",
+      "强化AI工具应用，以AI主产+人工审核模式推进账号内容创作",
+      "客服端完成第一版规则落地，后续将结合AI优化记录"
+    ],
+    "topics": [
+      "产品进展(KOL小程序/Dashboard)",
+      "KOL客户运营策略",
+      "挖客渠道规划",
+      "AI工具应用与客服优化"
+    ],
+    "actions": [
+      {"task": "KOL小程序MVP版本落地，交付团队使用", "who": "Rachel", "when": "下周", "pri": "高"},
+      {"task": "Dashboard重构后落地，支撑16个头部达人运营", "who": "团队", "when": "尽快", "pri": "高"},
+      {"task": "客服端报告AI优化，开展生成建议版块代码研究", "who": "团队", "when": "持续推进", "pri": "高"},
+      {"task": "推进达人YouTube小商品挂载模式研究，联动anymize团队", "who": "团队", "when": "持续推进", "pri": "中"},
+      {"task": "搭建三大挖客渠道，启动AI内容生产、工具开发、信息爬取", "who": "团队", "when": "尽快启动", "pri": "中"},
+      {"task": "自有出海账号内容上线，AI生产+人工审核发布", "who": "团队", "when": "持续更新", "pri": "中"}
+    ],
+    "fullText": "会议主题：KOL小程序与Dashboard优化\n参会人员：老板、Rachel、伟文、晓筠\n\n核心结论：\n- KOL小程序完成设计提升与真实数据接入\n- Dashboard完成信息架构重构\n- 50个KOL中约20%具备收益潜力\n- 确定三大挖客渠道\n- 强化AI工具应用"
+  },
+  // ===== 3: 0313 =====
+  {
+    "id": "0313",
+    "date": new Date(2026, 2, 13),
+    "title": "KOL项目组周会纪要0313",
+    "conclusions": [
+      "微信小程序因UI细节差距及设计文件不详尽，上线时间推迟，将采用新账号开发",
+      "微信客服系统已接入阿里云并上线，实现消息分流，完成版本优化",
+      "明确达人运营策略，不再依赖anymore方，自主运营头部达人",
+      "确定AI协作核心模式：由主调AI指挥执行层AI完成具体任务",
+      "小红书内容创作已搭建AI生成+人工审核流程，目前存在账号不足问题",
+      "流程图新功能可在对话中直接绘制、调整"
+    ],
+    "topics": [
+      "产品进展(微信小程序/客服系统)",
+      "达人运营策略调整",
+      "AI协作模式确立",
+      "小红书内容创作与账号问题"
+    ],
+    "actions": [
+      {"task": "微信小程序优化(新账号开发、UI调整、AI协作流程优化)", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "微信客服系统优化(聊天窗口样式、历史记录、流程图功能)", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "达人运营计划推进(商业链路打通、产品解决方案、15万投入跟进)", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "小红书账号补充(评估购买、询问账号成本)", "who": "老板/Rachel", "when": "-", "pri": "高"},
+      {"task": "优化AI协作流程，解决AI模型协作冲突问题", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "利用cloud code修改达人视频标题标签为日文", "who": "团队", "when": "-", "pri": "中"}
+    ],
+    "fullText": "会议主题：微信小程序与客服系统开发\n参会人员：老板、Rachel、伟文、晓筠\n\n核心结论：\n- 微信小程序因UI差距推迟上线\n- 微信客服系统已接入阿里云\n- 明确达人运营策略，不再依赖anymore方\n- 确定AI协作核心模式\n- 小红书内容创作已搭建AI生成+人工审核流程"
+  },
+  // ===== 4: 0320 =====
+  {
+    "id": "0320",
+    "date": new Date(2026, 2, 20),
+    "title": "KOL项目组周会纪要0320",
+    "conclusions": [
+      "AI助手存在交互体验不佳、意图识别偏差等问题，伟文整理用户常用问法及转化问法",
+      "探讨AI助手使用场景迁移至企业微信，直接开发自动化流程替代小程序存在法律风险",
+      "明确项目分阶段目标：第一阶段完成素材归集及AI化加工，第二阶段实现达人内容海外销售",
+      "确定AI协作核心模式：AI不替代人类思考，仅作为学习工具和框架搭建者",
+      "Rachel负责规划用于AI内容营销落地的公司官网建设"
+    ],
+    "topics": [
+      "AI助手优化与意图识别",
+      "自动化流程调研与法律风险评估",
+      "项目分阶段目标规划",
+      "官网建设规划"
+    ],
+    "actions": [
+      {"task": "整理用户常用问法及转化后标准问法，优化AI助手意图识别效果", "who": "伟文", "when": "-", "pri": "高"},
+      {"task": "调研普通群聊转企业微信、网页端自动化沟通的可行性", "who": "Rachel", "when": "-", "pri": "高"},
+      {"task": "研究自动化流程开发相关法律风险", "who": "伟文、Rachel", "when": "-", "pri": "高"},
+      {"task": "规划用于AI内容营销落地的公司官网建设", "who": "Rachel", "when": "-", "pri": "高"},
+      {"task": "向老板同步项目下一阶段具体发展目标", "who": "Rachel", "when": "-", "pri": "高"},
+      {"task": "优化AI协作流程，落实边学习、边创作模式", "who": "全体", "when": "-", "pri": "中"}
+    ],
+    "fullText": "会议主题：AI助手优化与自动化流程讨论\n参会人员：老板、Rachel、伟文、晓筠\n\n核心结论：\n- AI助手交互体验不佳，意图识别有偏差\n- 探讨AI助手迁移至企业微信\n- 明确项目分阶段目标\n- AI不替代人类思考\n- Rachel负责官网建设规划"
+  },
+  // ===== 5: 0410 =====
+  {
+    "id": "0410",
+    "date": new Date(2026, 3, 10),
+    "title": "KOL项目组周会纪要0410",
+    "conclusions": [
+      "AI获客账号优化：适配小红书改为图文结合形式，以出海人视角弱化专业术语",
+      "AI协作流程：确立主调度(GM)统一协调、复杂任务拆分多AI角色模式",
+      "云手机项目：已完成技术验证与全自动养号闭环，下一阶段用RPA实现内容发布自动化",
+      "项目管理规范：保持AI单组对话避免信息分裂，及时纠正AI输出偏差"
+    ],
+    "topics": [
+      "AI获客账号优化与内容策略",
+      "AI协作流程与工具选型",
+      "云手机项目规划与成本优化",
+      "项目管理规范"
+    ],
+    "actions": [
+      {"task": "细化并输出详细的AI获客流程，明确留言应答逻辑", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "启动云手机内容发布自动化流程(RPA)开发", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "研究评估不同代理方案成本", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "计算单台云手机支持账号数", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "探讨云手机商业化模式，下周复盘", "who": "团队", "when": "下周", "pri": "高"},
+      {"task": "让AI绘制获客流程图", "who": "团队", "when": "-", "pri": "中"}
+    ],
+    "fullText": "会议主题：AI获客账号优化、AI协作流程、云手机项目规划\n参会人员：老板、Rachel、伟文、晓筠\n\n核心结论：\n- AI获客账号适配小红书图文结合形式\n- AI协作：主调度统一协调\n- 云手机：完成技术验证与全自动养号闭环\n- 项目管理：保持AI单组对话避免信息分裂"
+  },
+  // ===== 6: 0417 (NEW) =====
+  {
+    "id": "0417",
+    "date": new Date(2026, 3, 17),
+    "title": "KOL项目组周会纪要0417",
+    "conclusions": [
+      "AI内容生成：当前存在数据作假、AI味重、主题提炼不准、小红书内容播放与互动差等问题，需优化形式、简化内容、提升可读性",
+      "获客与漏斗：采用矩阵号AI洗号获客，避免封号、提升曝光；重新定义客群画像与获客漏斗，明确话术、接单条件与阶段完成标准",
+      "人设与运营：弃用数据专家拗口人设，改为好奇型出海探索者人设，小红书与公众号人设差异化运营",
+      "云手机与产品：已完成TikTok自动化、后台优化、流量与成本测试；优先聚焦B2轻量化代运营，不做通用SaaS，探索垂直出海云手机服务",
+      "客户与效率：现有客户盈利比例低，需用AI快速筛选高价值客户；主动触达高收入KOL提升转化",
+      "出差与交接：下周二/三前往深圳拜访Anymind团队取经；完成建行卡财务交接事宜"
+    ],
+    "topics": [
+      "AI内容生成优化",
+      "获客策略与漏斗设计",
+      "人设与账号运营",
+      "云手机项目与产品聚焦",
+      "客户筛选与转化",
+      "出差与财务交接"
+    ],
+    "actions": [
+      {"task": "与AI对齐矩阵号曝光可行性、接入话术、流量承接、接单条件", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "明确小红书获客方法，定义第一/第二阶段完成标准", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "重新梳理用户画像、痛点、转化路径与漏斗开口，调整选题", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "从盈利视角重新定义客户画像，明确转化方向", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "重新规划项目优先级，用AI+外部数据优化业务方向", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "下周二/三前往深圳拜访Anymind团队，获取出海运营经验", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "整理会议纪要并将逐字稿归档至录音附件", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "重新设计获客漏斗模型，明确各环节转化重点", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "与AI明确B2模式产品功能与服务包细节", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "研究境外手机号卡服务的可行性与合规风险", "who": "团队", "when": "-", "pri": "中"},
+      {"task": "将建行卡交给阿琪琪完成财务交接", "who": "团队", "when": "-", "pri": "中"}
+    ],
+    "fullText": "会议主题：出海业务问题探讨、AI内容生成与获客策略优化\n参会人员：KOL项目组全体成员\n\n核心结论：\n1. AI内容生成存在数据作假、AI味重、主题提炼不准\n2. 获客与漏斗：矩阵号AI洗号获客\n3. 人设改为好奇型出海探索者\n4. 云手机：优先聚焦B2轻量化代运营\n5. 客户盈利比例低，需AI筛选高价值客户\n6. 下周二/三前往深圳拜访Anymind团队"
+  },
+  // ===== 7: 0424 (NEW) =====
+  {
+    "id": "0424",
+    "date": new Date(2026, 3, 24),
+    "title": "KOL项目组周会纪要0424",
+    "conclusions": [
+      "工作进展：完成抖音监控脚本优化、800家希尔顿酒店信息更新；日报已从飞书文档改为多维表格并同步共享",
+      "用户获客与痛点：按4个阶段梳理用户痛点，对标小红书出海类账号优化选题与内容方向",
+      "AI应用优化：当前AI仅用于一次性任务，需转向持续自动化运营；解决对话跑偏、费用高、网络不稳定等问题",
+      "客户解约处理：皮蛋solo粥因日文内容顾虑提出解约，需明确违约条款、损失告知与诉求沟通，争取挽回或合规收尾",
+      "会议与协作：因10:30/10:40需与KOL开会，本次会议提速推进；纪要逐字稿需发至工作群"
+    ],
+    "topics": [
+      "技术与日常工作(抖音监控/酒店数据/日报)",
+      "用户痛点与获客策略",
+      "AI使用现状与持续优化",
+      "客户解约处理与风险管控"
+    ],
+    "actions": [
+      {"task": "完成飞书日报转多维表格，共享给老板", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "将会议纪要录音逐字稿发送至工作群", "who": "团队", "when": "-", "pri": "中"},
+      {"task": "与皮蛋solo粥客户沟通解约诉求，说明违约赔偿与账号损失", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "按4阶段用户痛点优化内容选题，对标出海账号迭代方向", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "设计AI持续运营流程(如每日自动发布)，替代仅一次性任务", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "优化AI使用方式，解决对话跑偏、费用消耗快问题", "who": "团队", "when": "-", "pri": "中"},
+      {"task": "调试Openvpn网络稳定性，保障AI工具正常使用", "who": "团队", "when": "-", "pri": "中"},
+      {"task": "持续维护抖音监控与下载脚本，保障运行稳定", "who": "团队", "when": "-", "pri": "中"}
+    ],
+    "fullText": "会议主题：本周工作进展、AI运营应用、用户痛点梳理及客户解约问题\n参会人员：老板、Rachel、伟文、晓筠\n\n核心结论：\n1. 完成抖音监控脚本优化、800家酒店信息更新\n2. 按4阶段梳理用户痛点\n3. AI仅用于一次性任务，需转向持续自动化\n4. 皮蛋solo粥因日文内容顾虑提出解约\n5. 日报已改为多维表格"
+  },
+  // ===== 8: 0508 (NEW) =====
+  {
+    "id": "0508",
+    "date": new Date(2026, 4, 8),
+    "title": "KOL项目组周会纪要0508",
+    "conclusions": [
+      "工作进展与订单情况：完成800多家酒店数据全流程跑批；达人内容发布兼容多阶段流程，计划接入视频横竖屏自动转换工具；累计产生四五笔酒店相关订单，但因客户后端系统未对接，暂未产生收入",
+      "AI工具应用：明确AI使用需以目标为导向、主动学习探索，避免被动返工；需沉淀使用经验、建立规范流程",
+      "业务与账号运营：视频业务需关注爆款持续性，2名KOL接近YPP标准；打盗版业务暂不适合收费；部分IPP账号存在刷粉刷量现象",
+      "工作理念与成长：反对拿死工资、被动执行，强调工作自主性；调整心态，将AI视为成长伙伴而非压力源",
+      "获客与流程建设：需研究Saleskey获客方式，寻找首个非正业介绍客户；推进视频制作全流程测试优化"
+    ],
+    "topics": [
+      "酒店数据与订单推进",
+      "达人与视频业务优化",
+      "AI工具应用规范与经验沉淀",
+      "打盗版业务与账号管理",
+      "获客渠道拓展"
+    ],
+    "actions": [
+      {"task": "总结AI使用中的问题、失败原因及解决方法，形成经验教训供团队参考", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "探索优化AI生成视频流程，高效实现脚本到音频、视频的转化", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "分享AI协作经验，明确与AI协作的监督程度，实现高效配合", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "研究Saleskey，寻找首个非正业介绍的客户", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "跟进客户后端系统对接进度，推动已产生订单变现", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "推进视频横竖屏比例互换自动发布工具的接入工作", "who": "团队", "when": "-", "pri": "中"},
+      {"task": "持续维护酒店数据更新，优化IP切换等应对限流的方法", "who": "团队", "when": "-", "pri": "中"},
+      {"task": "用版权保护工具助力接近YPP标准的KOL账号成长", "who": "团队", "when": "-", "pri": "中"},
+      {"task": "规范IPP账号运营，杜绝刷粉刷量行为", "who": "团队", "when": "-", "pri": "中"},
+      {"task": "探索打盗版高效方法，持续跟踪盗版打击效果", "who": "团队", "when": "-", "pri": "中"}
+    ],
+    "fullText": "会议主题：团队工作进展、收入目标、AI工具应用及业务优化\n参会人员：老板、Rachel、伟文、晓筠\n\n核心结论：\n1. 完成800多家酒店数据全流程跑批\n2. AI使用需以目标为导向\n3. 2名KOL接近YPP标准\n4. 反对被动执行，强调工作自主性\n5. 研究Saleskey获客方式"
+  },
+  // ===== 9: 0515 (NEW) =====
+  {
+    "id": "0515",
+    "date": new Date(2026, 4, 15),
+    "title": "KOL项目组周会纪要0515",
+    "conclusions": [
+      "项目进展：完成自动评论、触达号搭建、自动化频道管理、视频横竖屏互换链路；解决达人上传与INS大文件报错；800间酒店信息基本完成，5月订单增长",
+      "账号管理：原40+账号仅10个可登录，因买号、无绑定、IP单一被Google封禁；后续改用达人自注册+付费托管，优先非Gmail邮箱+绑定手机号",
+      "获客策略：以副业做YouTube人设运营触达号，自动评论触达用户，本周内触达≥30人；评估多账号并行运行",
+      "项目规划：全员拆分任务、制定模块计划，本周五汇总整体计划；本周三前提交各模块细化方案",
+      "媒体矩阵：搭建官网+公众号+小红书联动，参考现有推文发文并提升阅读量",
+      "财务结算：与皮蛋solo按季度结算，6月打款，需与郑哥确认公司收款账户",
+      "工作方法：强化多任务处理与里程碑拆分；开会前可用AI校验发言与总结"
+    ],
+    "topics": [
+      "自动化技术与工具开发",
+      "账号登录安全与管理制度",
+      "获客触达策略",
+      "项目规划与任务拆分",
+      "媒体矩阵建设",
+      "款项结算"
+    ],
+    "actions": [
+      {"task": "观察触达号效果，下周前触达≥30人，评估多号运行", "who": "团队", "when": "下周", "pri": "高"},
+      {"task": "联系AnyMind获取账号所有者转移方案", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "将达人自注册、付费托管、邮箱选型规则发至工作群", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "制定官网+公众号+小红书联动计划，发文并提升阅读量", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "与郑哥确认皮蛋solo季度结算的公司打款账户", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "本周三前提交各模块细化工作计划", "who": "团队", "when": "本周三", "pri": "高"},
+      {"task": "本周五讨论并汇总形成整体项目计划", "who": "团队", "when": "本周五", "pri": "高"},
+      {"task": "探索电脑端私信沟通功能实现", "who": "团队", "when": "-", "pri": "中"},
+      {"task": "完善酒店集团信息处理与订单匹配脚本", "who": "团队", "when": "-", "pri": "中"}
+    ],
+    "fullText": "会议主题：项目进展、账号管理、获客策略、媒体矩阵及工作计划\n参会人员：KOL项目组全体成员\n\n核心结论：\n1. 完成自动评论、触达号搭建、视频横竖屏互换链路\n2. 40+账号仅10个可登录，改用达人自注册+付费托管\n3. 以副业做YouTube人设运营触达号，本周内触达≥30人\n4. 全员拆分任务、制定模块计划\n5. 搭建官网+公众号+小红书联动\n6. 皮蛋solo季度结算，6月打款"
+  },
+  // ===== 10: 0529 (NEW) =====
+  {
+    "id": "0529",
+    "date": new Date(2026, 4, 29),
+    "title": "KOL项目组周会纪要0529",
+    "conclusions": [
+      "工作成果：完成新版PPT与logo制作；依托AI完成全阶段产品规划，细化各阶段任务",
+      "产品阶段规划：明确四阶段产品迭代节奏，现阶段产品进度20%，联合伟文完成基础功能后产品可达60分；7月推进PMF阶段验证真实用户需求",
+      "双业务模式定位：延续现有50个成熟KOL代运营模式；推出速达诊断报告工具，面向全网创作者轻量化引流",
+      "产品服务体系搭建：包含文娱诊断报告、自动运营增速包、申诉包；报告划分三个版本",
+      "市场与客户运营优化：摒弃闭门造车模式，通过多渠道主动对接客户、KOL；优化客户筛选逻辑，聚焦高价值客群",
+      "阶段性工作安排：已筛选6名达人启动Facebook诊断，2-3天输出初稿；本周优化AI诊断内容，下周输出正式版报告"
+    ],
+    "topics": [
+      "品牌物料与账号运营",
+      "产品迭代开发与PMF验证",
+      "双业务模式落地",
+      "AI诊断报告项目",
+      "市场客户对接与需求调研"
+    ],
+    "actions": [
+      {"task": "完成港海一周飞书总结汇报，同步项目阶段性进展", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "完成达人筛选、数据采集工作，优化AI诊断内容至合格标准", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "2-3日内输出AI诊断报告初版、原稿，提交审核校对", "who": "团队", "when": "2-3日", "pri": "高"},
+      {"task": "下周完成优化，输出正式版AI诊断报告", "who": "团队", "when": "下周", "pri": "高"},
+      {"task": "采购手机号，完成活客号注册重建工作", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "重新整理并发送产品介绍、测试报告至相关对接人员", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "对接现有客户及50个合作KOL，调研真实需求，优化产品规划", "who": "团队", "when": "-", "pri": "高"},
+      {"task": "当日下午讨论招人相关事宜", "who": "团队", "when": "当日", "pri": "高"},
+      {"task": "联合伟文推进产品基础功能开发，达成60分基础标准", "who": "团队", "when": "-", "pri": "中"},
+      {"task": "对接汇丰等重点客户，提供产品Demo，收集优化反馈", "who": "团队", "when": "-", "pri": "中"}
+    ],
+    "fullText": "会议主题：产品VI优化、AI辅助规划、KOL业务模式、诊断报告与市场沟通\n参会人员：老板、Rachel、伟文、晓筠\n\n核心结论：\n1. 完成新版PPT与logo制作\n2. 四阶段产品迭代：当前20%，基础功能后达60分\n3. 双业务模式：KOL代运营 + 诊断报告引流\n4. 产品服务体系：诊断报告、增速包、申诉包\n5. 摒弃闭门造车，多渠道对接客户\n6. 已筛选6名达人启动Facebook诊断"
+  },
+  // ===== 11: 0605 (NEW) =====
+  {
+    "id": "0605",
+    "date": new Date(2026, 5, 5),
+    "title": "KOL项目组周会会议纪要0605",
+    "conclusions": [
+      "明确运营报告→Agent→媒体库→品牌资源对接的发展路径",
+      "当前重点从产品开发转向市场需求验证",
+      "长期方向为平台模式，而非单纯代运营模式",
+      "产品价值必须来源于客户需求",
+      "AI定位为辅助决策与发现问题的工具"
+    ],
+    "topics": [
+      "商业模式与平台路径",
+      "客户需求验证",
+      "运营报告与Agent服务",
+      "AI应用定位"
+    ],
+    "actions": [
+      {"task": "官网初版提交审阅", "who": "伟文", "when": "下周周会前", "pri": "高"},
+      {"task": "开展目标用户访谈", "who": "项目组", "when": "下周周会前", "pri": "高"},
+      {"task": "收集运营报告反馈", "who": "项目组", "when": "下周周会前", "pri": "高"},
+      {"task": "验证运营报告付费意愿", "who": "项目组", "when": "下周周会前", "pri": "高"},
+      {"task": "完成API充值申请", "who": "伟文", "when": "本周", "pri": "中"},
+      {"task": "完成5月订单结算", "who": "伟文", "when": "本周", "pri": "中"},
+      {"task": "研究CJ模式及相关案例", "who": "项目组", "when": "持续推进", "pri": "中"}
+    ],
+    "fullText": "会议主题：KOL项目商业模式与产品价值讨论\n参会人员：老板、Rachel、伟文、晓筠\n\n核心结论：\n1. 明确运营报告→Agent→媒体库→品牌资源对接的发展路径\n2. 当前重点从产品开发转向市场需求验证\n3. 长期方向为平台模式\n4. 产品价值必须来源于客户需求\n5. AI定位为辅助决策与发现问题的工具\n\n待验证事项：\n- 运营报告用户付费意愿\n- Agent服务续费能力\n- 媒体库竞争壁垒\n- CJ模式适用性\n\n老板思考题：\n- 我们的业务本质是什么？\n- 客户真正需要什么？\n- 为什么客户愿意付费？\n- 为什么建设媒体库？\n- 为什么参考CJ模式？\n- 迪士尼和泡泡玛特为什么成功？"
+  },
+  // ===== 12: 0612 =====
+  {
+    "id": "0612",
+    "date": new Date(2026, 5, 12),
+    "title": "KOL项目组周会纪要0612",
+    "conclusions": [
+      "运营报告已获得初步市场反馈，需继续扩大漏斗验证",
+      "诊断报告入口将接入智能体降低信任门槛",
+      "账号体系重建支撑后续测试",
+      "代运营升级为海外内容资产管理",
+      "AI逐步进入流程自动化"
+    ],
+    "topics": [
+      "运营报告与漏斗验证",
+      "诊断报告与智能体接入",
+      "账号体系建设",
+      "商业模式升级",
+      "AI应用深化"
+    ],
+    "actions": [
+      {"task": "扩大漏斗验证", "who": "项目组", "when": "下周", "pri": "高"},
+      {"task": "诊断报告接入智能体", "who": "项目组", "when": "下周", "pri": "高"},
+      {"task": "新建小红书账号", "who": "待确认", "when": "待手机号", "pri": "中"},
+      {"task": "重建Google/Youtube账号", "who": "项目组", "when": "本周", "pri": "高"},
+      {"task": "达人打款推进", "who": "相关负责人", "when": "6月", "pri": "中"},
+      {"task": "研究CJ模式", "who": "项目组", "when": "持续", "pri": "高"}
+    ],
+    "fullText": "会议主题：KOL代运营及AI应用会\n参会人员：老板、Rachel、伟文、晓筠\n\n核心结论：\n1. 运营报告已获得初步市场反馈\n2. 诊断报告入口将接入智能体\n3. 账号体系重建支撑后续测试\n4. 代运营升级为海外内容资产管理\n5. AI逐步进入流程自动化\n\n待验证事项：\n- 用户咨询是否转化\n- 报告付费意愿\n- 代运营升级路径\n- AI自动化收益\n\n老板思考题：\n- 为什么用户咨询但不转化\n- 为什么达人不绕过平台\n- CJ真正价值是什么\n- 如何进入交易结算环节\n- 哪些流程值得AI接管"
+  },
+  // ===== 13: 0626 =====
+  {
+    "id": "0626",
+    "date": new Date(2026, 5, 26),
+    "title": "KOL项目组周会纪要0626",
+    "conclusions": [
+      "达人匹配器开发推进中，数据采集存在难点，需持续完善",
+      "诊断报告反馈良性，部分用户按建议修改后数据提升，需提升识别精准度",
+      "科园A标书功能修复完成，待优化问题需持续推进",
+      "酒店业务GDS信息交付完成部分，API接口稳定性待提升",
+      "财务结算计划明确：7月初索要账号，7月底完成皮蛋费用结算"
+    ],
+    "topics": [
+      "达人匹配与合作进展",
+      "诊断报告优化与产品化",
+      "科园A标书功能优化",
+      "酒店业务与API稳定性",
+      "财务结算"
+    ],
+    "actions": [
+      {"task": "跟进成果和中案对接", "who": "项目组", "when": "持续", "pri": "高"},
+      {"task": "加快自动达人匹配器数据采集", "who": "项目组", "when": "持续", "pri": "高"},
+      {"task": "提升诊断报告识别和分析准确率", "who": "项目组", "when": "下周", "pri": "高"},
+      {"task": "科园A标书功能优化", "who": "项目组", "when": "持续", "pri": "中"},
+      {"task": "酒店API接口稳定性提升", "who": "项目组", "when": "持续", "pri": "中"},
+      {"task": "7月初向皮蛋索要账号", "who": "相关负责人", "when": "7月初", "pri": "高"},
+      {"task": "7月底完成皮蛋费用结算", "who": "相关负责人", "when": "7月底", "pri": "高"}
+    ],
+    "fullText": "会议主题：业务进展及优化方向讨论\n参会人员：老板、Rachel、伟文、晓筠\n\n核心结论：\n1. 达人匹配器开发推进中\n2. 诊断报告反馈良性\n3. 科园A标书功能修复完成\n4. 酒店业务GDS信息交付完成部分\n5. 财务结算：7月初索要账号，7月底完成结算\n\n待验证事项：\n- 达人匹配效率是否达标\n- 诊断报告产品上线后用户留存\n- 科园A标书AI解释效果\n- 酒店数据更新自动化收益\n- 皮蛋费用结算流程顺畅度"
+  },
+  // ===== 14: 0703 (NEW) =====
+  {
+    "id": "0703",
+    "date": new Date(2026, 6, 3),
+    "title": "KOL项目组周会纪要0703",
+    "conclusions": [
+      "AI营销系统四大模块(监测、输入、判断、输出)逻辑已明确，判断模块完成核心逻辑细化与新增输入源调试，下一步需明确产出标准、优化数据深度",
+      "酒店业务已梳理GDS系统痛点，后续将推进数据更新代运营合作，优先完成存量数据准确性校验",
+      "AI标书项目当前优先完成基础信息与保证金专题的七层架构验证，后续再覆盖其余七类内容",
+      "达人盘点报告存在内容同质化问题，需先优化行动建议颗粒度，再完成服务器端部署",
+      "财务端分销佣金票已开具，待回款；两千余元待收款项今日跟进处理，月度预计收入五六百元"
+    ],
+    "topics": [
+      "AI营销系统建设",
+      "酒店业务与GDS系统优化",
+      "AI标书项目推进",
+      "达人盘点报告优化",
+      "财务结算与回款"
+    ],
+    "actions": [
+      {"task": "与多AI工具沟通，明确达人内容数据分析报告输出形态，落实对应数据采集规则", "who": "团队", "when": "本周", "pri": "高"},
+      {"task": "对接酒店合作方，洽谈数据更新代运营收费模式", "who": "团队", "when": "本周", "pri": "高"},
+      {"task": "完成AI标书基础信息与保证金专题七层架构验证", "who": "团队", "when": "持续", "pri": "高"},
+      {"task": "优化达人盘点报告行动建议，完成服务器端部署", "who": "团队", "when": "下周", "pri": "高"},
+      {"task": "完成酒店存量数据准确性校验", "who": "团队", "when": "持续", "pri": "中"},
+      {"task": "跟进两千余元待收款项、分销佣金回款", "who": "团队", "when": "今日/近期", "pri": "高"},
+      {"task": "梳理AI营销七大方法论环节，锁定可优化关键节点", "who": "团队", "when": "本周", "pri": "中"}
+    ],
+    "fullText": "会议主题：AI营销与酒店业务相关事项讨论\n参会人员：老板、Rachel、伟文、晓筠\n记录人：陈晓筠\n\n核心结论：\n1. AI营销系统四大模块逻辑已明确，判断模块完成核心逻辑细化\n2. 酒店业务已梳理GDS系统痛点，推进数据更新代运营合作\n3. AI标书项目优先完成基础信息与保证金专题七层架构验证\n4. 达人盘点报告存在内容同质化问题，需优化行动建议颗粒度\n5. 财务端分销佣金票已开具，待回款\n\n重点讨论：\n- AI营销：需先明确报告最终输出形态再倒推数据采集，拒绝纯文字PPT，要求可视化图表\n- 酒店业务：优先保障数据准确性，可切入酒店数据更新代运营服务\n- AI标书：对标竞品优化，先完成核心模块验证\n- 达人盘点：报告需细化可落地的action item\n- 财务结算：明确回款节点，及时跟进逾期款项\n\n待验证事项：\n- 多AI交叉验证的报告产出质量是否优于单一AI\n- 酒店数据更新代运营合作模式的接受度\n- AI标书七层架构验证准确率\n- 优化后达人盘点报告的客户采纳率\n- 酒店API接口稳定性优化效果"
+  },
+  // ===== 15: 0710 (NEW) =====
+  {
+    "id": "0710",
+    "date": new Date(2026, 6, 10),
+    "title": "KOL项目组周会纪要0710",
+    "conclusions": [
+      "AI营销产品定位已明确：放弃低壁垒的通用PR方案和泛人群报告路线，转向高壁垒的精准AI营销服务赛道，核心能力为单粉丝全链路画像+评论区商机识别与定向回复",
+      "现有KOL数据采集已完成科技大雄君全量1200+条YouTube评论采集与三层清洗，但价值落地不明确，需进一步深挖数据价值",
+      "标书解析项目已完成七层架构拆分方法论验证，AI语义抽取准确率优于规则抽取，已完成四城市酒店GDS数据补采",
+      "皮蛋需新签原合作合同的补充协议，明确原合同项下所有收益的划转路径至其新公司账户",
+      "全员统一切换使用GPT作为核心工具，停止依赖低效率代码生成工具，所有产品逻辑须直接对接客户真实痛点"
+    ],
+    "topics": [
+      "AI营销产品定位与方向",
+      "KOL数据价值深挖",
+      "标书解析项目推进",
+      "合作方合同调整（皮蛋）",
+      "天旅酒店数据跟进"
+    ],
+    "actions": [
+      {"task": "下周初输出AI营销产品整体定位的PPT，基于过往会议记录让AI梳理产品全景，优先输出可视化示意图", "who": "团队", "when": "下周初", "pri": "高"},
+      {"task": "深挖评论侧的粉丝画像、评论运营相关能力，落地单粉丝全链路画像能力", "who": "团队", "when": "下周", "pri": "高"},
+      {"task": "为皮蛋新签原合作合同的补充协议，确认银行账户、开票信息，告知收益到账时间节点", "who": "团队", "when": "本周", "pri": "高"},
+      {"task": "标书解析：优先完成现有样本的基础信息类字段梳理、主题与关键词配置，验证固化后再接入系统", "who": "说话人4", "when": "持续", "pri": "高"},
+      {"task": "再次联系Amanda，沟通四地酒店数据补全的相关需求，主动通过电话确认", "who": "说话人4", "when": "本周", "pri": "高"},
+      {"task": "用AI梳理过往所有工作中出现的问题，形成固定错误检查清单，每次交付前先校验", "who": "团队", "when": "持续", "pri": "中"},
+      {"task": "全面切换至GPT作为项目主调度工具，将全量历史信息导入专属上下文，避免重复沟通", "who": "全员", "when": "即刻", "pri": "高"}
+    ],
+    "fullText": "会议主题：AI营销产品方向与工作方法讨论\n参会人员：老板、Rachel、伟文、梦颖\n记录人：陈晓筠\n\n核心结论：\n1. AI营销产品定位已明确：放弃低壁垒通用PR路线，转向精准AI营销服务赛道\n2. 现有KOL数据采集完成科技大雄君1200+条评论采集与三层清洗\n3. 标书解析项目完成七层架构拆分方法论验证\n4. 皮蛋需新签补充协议，明确收益划转路径\n5. 全员统一切换使用GPT作为核心工具\n\n重点讨论：\n- AI营销产品定位：放弃低壁垒通用PR路线，转向精准营销服务；产品须直接回应市场真实痛点\n- 数据价值深挖：推进字幕音频抽取、视频抽帧，落地面向品牌的AI营销能力\n- 标书解析：优先完成基础信息类字段梳理，验证固化后再接入系统\n- 合作方合同调整：不废止原合同，仅新签补充协议\n- 天旅酒店数据：需再次联系Amanda沟通四地酒店数据补全需求\n\n待验证事项：\n- AI营销产品定位PPT的客户认可度与可行性\n- 单粉丝全链路画像能力的技术可行性与商业价值\n- 评论区商机识别与定向回复能力的落地效果\n- 标书七层架构解析法覆盖全部维度的准确率\n- 合作方对收益账户调整的接受度与执行效率\n\n老板思考题：\n- AI对这个数字世界的理解到底是什么？这是第一步\n- 产品的不可替代竞争壁垒如何构建\n- 如何让市场反馈成为产品可行性的唯一判断依据\n- 如何将过往错误沟通转化为可复用的检查清单与迭代机制\n- 如何用AI辅助绘制产品逻辑与方案的可视化图景\n\n经验与启发：\n- 放弃低壁垒路线，转向精准营销服务赛道；产品定位须以市场真实需求为导向\n- 现有采集仅是基础动作，需落地到单用户粉丝画像与评论商机识别\n- 停止依赖低效率代码生成工具，全面切换至GPT\n- 停止仅通过微信对接客户，需主动通过电话沟通确认需求"
+  },
+  // ===== 16: 0724 (NEW) =====
+  {
+    "id": "0724",
+    "date": new Date(2026, 6, 24),
+    "title": "KOL项目组周会纪要0724",
+    "conclusions": [
+      "皮蛋补充协议尚未确认，本周已追问2-3次，待签署后开具发票即可完成全流程回款，对应600多美元按中行美元现汇买入价折算",
+      "离职交接已启动：全量核心文档归集至飞书，运营类合同与账号由志彬接手，小程序工程文件直发对接人",
+      "用户画像分析项目通路已验证：1200+条评论经清洗层层筛选后留162条有效样本，依托AI工具替代人工抓取归类",
+      "AI标书基础信息模块经客户核验齐全，跳转高亮功能已完成基础开发，1-2周内扩展至剩余6类业务流程",
+      "聚客平台已完成3家核心集团代运码配置，覆盖数百家酒店，后续全量梳理1000家酒店ID完成配置",
+      "将搭建订单实时数据看板，展示订单量、已收待收款项、佣金等核心经营数据"
+    ],
+    "topics": [
+      "皮蛋结算跟进",
+      "离职交接安排",
+      "用户画像分析",
+      "AI标书项目推进",
+      "微信截图解析修复",
+      "聚客平台与酒店业务"
+    ],
+    "actions": [
+      {"task": "继续追踪皮蛋补充协议确认与签署，确保开具发票后走付款流程", "who": "团队", "when": "本周", "pri": "高"},
+      {"task": "完成全量核心文档归集至飞书并开放权限给志彬、伟文等接手人员", "who": "团队", "when": "本周", "pri": "高"},
+      {"task": "将小程序工程类文件单独发送至对应对接人", "who": "团队", "when": "本周", "pri": "高"},
+      {"task": "完成AI标书跳转高亮功能多样本验证，1-2周内扩展至剩余6类业务流程", "who": "伟文", "when": "1-2周", "pri": "高"},
+      {"task": "对接客户沟通AI标书系统收费模式，推进付费转化", "who": "伟文", "when": "持续", "pri": "高"},
+      {"task": "观测微信截图解析试运行数据，确认成功率与稳定性后切换正式运行", "who": "团队", "when": "近期", "pri": "中"},
+      {"task": "全量梳理1000家酒店ID，核对品牌归属后统一完成代理码配置修正", "who": "团队", "when": "持续", "pri": "高"},
+      {"task": "搭建订单实时数据看板（订单量、已收待收款项、佣金）", "who": "团队", "when": "本周", "pri": "高"},
+      {"task": "对接天宇法信息小程序配置，探索小程序订酒店功能落地", "who": "团队", "when": "本周", "pri": "中"},
+      {"task": "后续清理飞书文件夹冗余内容，保障核心资料存储与访问空间", "who": "团队", "when": "后续", "pri": "中"}
+    ],
+    "fullText": "会议主题：多项业务进度同步与交接安排\n参会人员：老板、程梦颖、黄伟文、覃洁莹、刘志彬\n记录人：陈晓筠\n\n核心结论：\n1. 皮蛋补充协议尚未确认，本周已追问2-3次，待签署后开具发票即可完成全流程回款\n2. 离职交接已启动：全量核心文档归集至飞书，运营类合同与账号由志彬接手\n3. 用户画像分析项目通路已验证：1200+条评论清洗后留162条有效样本\n4. AI标书基础信息模块经客户核验齐全，跳转高亮功能已完成基础开发\n5. 聚客平台已完成3家核心集团代运码配置，覆盖数百家酒店\n6. 将搭建订单实时数据看板，展示订单量、已收待收款项、佣金\n\n重点讨论：\n- 皮蛋结算：持续追问促签署，签完后必须开具发票再走付款流程\n- 离职交接：所有资料迁移至飞书对应位置，解决存储与权限问题\n- 用户画像分析：向渠道方输出粉丝画像报告，向品牌方输出匹配报告，通过会员付费与定制服务变现\n- AI标书：先完成验证再扩展至其余6类，上线后邀请客户试用并沟通付费模式\n- 微信截图解析：微信页面规则调整导致原解析逻辑失效，已修复并重启运行\n- 聚客平台：需全量梳理1000家酒店ID并核对品牌归属\n\n待验证事项：\n- 皮蛋补充协议签署与回款流程能否顺利闭环\n- 用户画像分析全量900+条样本的有效性与商业价值\n- AI标书跳转高亮功能多样本验证的准确率与稳定性\n- 微信截图解析试运行期的成功率与异常率指标\n- 聚客平台全量1000家酒店代理码配置的准确性\n- 订单实时看板的数据准确性与可视化效果\n\n老板思考题：\n- 用户画像分析的商业化路径如何设计才能验证付费意愿\n- 如何确保交接过程中的信息无遗漏且可持续访问\n- AI标书系统的收费模式如何设计才能推动客户付费\n- 小程序订酒店功能的落地是否能形成新的营收增长点\n- 如何将离职交接的经验沉淀为可复制的标准流程\n\n经验与启发：\n- 皮蛋类合作方需建立定期追踪机制，补充协议与发票流程须在合同中预先锁定\n- 文档归集、权限开放、冗余清理需在离职前完成闭环\n- AI工具是穿透平台数据隐私限制的关键突破口\n- 技术调整导致的功能失效需建立快速修复与运行观测机制\n- 订单看板等实时数据工具能显著提升经营决策效率"
+  }
 ];
+// ============ END OF DATA ============
 
-const MILESTONE_DAYS_AHEAD = 30;
-
-function getUpcomingMilestones(list, today) {
-  const year = today.getFullYear();
-  const result = [];
-  list.forEach(staff => {
-    const [bMonth, bDay] = staff.birthday.split('-').map(Number);
-    let birthThisYear = new Date(year, bMonth - 1, bDay);
-    if (birthThisYear < today) birthThisYear = new Date(year + 1, bMonth - 1, bDay);
-    const daysToBirthday = Math.ceil((birthThisYear - today) / (1000 * 60 * 60 * 24));
-    if (daysToBirthday > 0 && daysToBirthday <= MILESTONE_DAYS_AHEAD) {
-      result.push({ name: staff.name, type: 'birthday', label: '🎂 生日', dateStr: `${bMonth}月${bDay}日`, dateSort: birthThisYear, daysLeft: daysToBirthday });
-    }
-    const join = new Date(staff.joinDate);
-    const jMonth = join.getMonth(), jDay = join.getDate();
-    let annThisYear = new Date(year, jMonth, jDay);
-    if (annThisYear < today) annThisYear = new Date(year + 1, jMonth, jDay);
-    const daysToAnn = Math.ceil((annThisYear - today) / (1000 * 60 * 60 * 24));
-    const years = annThisYear.getFullYear() - join.getFullYear();
-    if (daysToAnn > 0 && daysToAnn <= MILESTONE_DAYS_AHEAD) {
-      result.push({ name: staff.name, type: 'anniversary', label: `🏆 ${years}年入职周年`, dateStr: `${jMonth+1}月${jDay}日`, dateSort: annThisYear, daysLeft: daysToAnn });
-    }
-  });
-  result.sort((a, b) => a.dateSort - b.dateSort);
-  return result;
+function init() {
+  renderStats();
+  renderDateNav();
+  renderAllComparisons();
 }
 
-function renderMilestones() {
-  const today = new Date(); today.setHours(0,0,0,0);
-  const all = getUpcomingMilestones(STAFF_DATA, today);
-  const birthdays = all.filter(m => m.type === 'birthday');
-  const anniversaries = all.filter(m => m.type === 'anniversary');
+function renderStats() {
+  document.getElementById('statMeetings').textContent = meetings.length;
+  document.getElementById('statPairs').textContent = meetings.length - 1;
+  const first = meetings[0].date.toLocaleDateString('zh-CN', {month:'2-digit', day:'2-digit'});
+  const last = meetings[meetings.length-1].date.toLocaleDateString('zh-CN', {month:'2-digit', day:'2-digit'});
+  document.getElementById('statSpan').textContent = `${first} ~ ${last}`;
+}
 
-  document.getElementById('countBirthday').textContent = birthdays.length ? `（${birthdays.length}人）` : '（无）';
-  document.getElementById('countAnniversary').textContent = anniversaries.length ? `（${anniversaries.length}人）` : '（无）';
+function renderDateNav() {
+  const bar = document.getElementById('dateNavBar');
+  let html = '<span class="label">📅 已收录 ' + meetings.length + ' 场会议 · 时间跨度：';
+  const first = meetings[0].date.toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' });
+  const last = meetings[meetings.length-1].date.toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' });
+  html += first + ' – ' + last + '</span>';
+  bar.innerHTML = html;
+}
 
-  const overviewEl = document.getElementById('overviewMilestone');
-  document.getElementById('overviewBirthdayCount').textContent = birthdays.length;
-  document.getElementById('overviewAnniversaryCount').textContent = anniversaries.length;
-  if (!birthdays.length && !anniversaries.length) {
-    overviewEl.classList.replace('text-pink-600','text-gray-400');
-    overviewEl.classList.remove('cursor-pointer','hover:underline');
-  } else {
-    overviewEl.classList.replace('text-gray-400','text-pink-600');
-    overviewEl.classList.add('cursor-pointer','hover:underline');
+function renderAllComparisons() {
+  const pairs = [];
+  for (let i = meetings.length - 1; i >= 1; i--) {
+    pairs.push({ old: meetings[i - 1], new_: meetings[i], index: pairs.length });
+  }
+  pairs.reverse();
+
+  const navTabs = document.getElementById('navTabs');
+  navTabs.innerHTML = pairs.map((p, i) => {
+    const oldD = p.old.date.toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' });
+    const newD = p.new_.date.toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' });
+    const isLatest = (i === 0);
+    return `<button class="nav-tab ${isLatest ? 'active' : ''}" data-index="${i}" onclick="switchTab(${i})">${oldD} → ${newD}${isLatest ? '（最新）' : ''}</button>`;
+  }).join('');
+
+  const content = document.getElementById('comparisonContent');
+  content.innerHTML = pairs.map((p, i) => {
+    return `<div class="compare-pair" id="pair-${i}" style="${i === 0 ? '' : 'display:none;'}">
+      ${renderPairComparison(p.old, p.new_)}
+    </div>`;
+  }).join('');
+}
+
+function renderPairComparison(oldM, newM) {
+  const oldDate = oldM.date.toLocaleDateString('zh-CN');
+  const newDate = newM.date.toLocaleDateString('zh-CN');
+
+  const oldC = oldM.conclusions.length;
+  const newC = newM.conclusions.length;
+  const oldA = oldM.actions.length;
+  const newA = newM.actions.length;
+
+  let html = `
+    <div class="summary-bar">
+      <div class="summary-item"><strong>${oldDate}</strong>：结论 ${oldC} 条 / 行动 ${oldA} 项</div>
+      <div class="summary-item"><strong>${newDate}</strong>：结论 ${newC} 条 / 行动 ${newA} 项</div>
+      <div class="summary-item">结论变化：<strong>${newC > oldC ? '+' : ''}${newC - oldC}</strong></div>
+      <div class="summary-item">行动事项变化：<strong>${newA > oldA ? '+' : ''}${newA - oldA}</strong></div>
+    </div>
+    <div class="compare-grid">
+      ${renderPanel(oldM, 'old', oldDate)}
+      ${renderPanel(newM, 'new', newDate)}
+    </div>
+    ${renderDiff(oldM, newM)}
+  `;
+  return html;
+}
+
+function renderPanel(meeting, type, dateStr) {
+  const cls = type === 'old' ? 'panel-old' : 'panel-new';
+  let body = '';
+
+  // Conclusions
+  body += `<div class="section-block"><h4>📌 核心结论 (${meeting.conclusions.length}条)</h4><ol>`;
+  body += meeting.conclusions.map(c => `<li>${escapeHtml(c)}</li>`).join('');
+  body += `</ol></div>`;
+
+  // Topics
+  body += `<div class="section-block"><h4>📋 讨论议题</h4><ul>`;
+  body += meeting.topics.map(t => `<li>${escapeHtml(t)}</li>`).join('');
+  body += `</ul></div>`;
+
+  // Actions table
+  body += `<div class="section-block"><h4>✅ 行动事项 (${meeting.actions.length}项)</h4>`;
+  body += `<table><thead><tr><th>任务</th><th>负责人</th><th>时间</th><th>优先级</th></tr></thead><tbody>`;
+  body += meeting.actions.map(a =>
+    `<tr><td>${escapeHtml(a.task)}</td><td>${escapeHtml(a.who)}</td><td>${escapeHtml(a.when)}</td><td>${priBadge(a.pri)}</td></tr>`
+  ).join('');
+  body += `</tbody></table></div>`;
+
+  // Full text toggle
+  body += `<div class="full-content-toggle">
+    <button onclick="toggleFullContent(this)">📄 显示/隐藏完整会议内容</button>
+    <div class="full-content">${escapeHtml(meeting.fullText)}</div>
+  </div>`;
+
+  return `<div class="compare-panel ${cls}">
+    <div class="panel-header">
+      <span class="badge">${type === 'old' ? '📖 前次' : '🆕 最新'}</span>
+      ${dateStr}
+    </div>
+    <div class="panel-body">${body}</div>
+  </div>`;
+}
+
+function renderDiff(oldM, newM) {
+  const oldSet = new Set(oldM.conclusions);
+  const newSet = new Set(newM.conclusions);
+  const added = newM.conclusions.filter(c => !oldSet.has(c));
+  const removed = oldM.conclusions.filter(c => !newSet.has(c));
+
+  const oldATitles = new Set(oldM.actions.map(a => a.task));
+  const newATitles = new Set(newM.actions.map(a => a.task));
+  const addedActions = newM.actions.filter(a => !oldATitles.has(a.task));
+  const removedActions = oldM.actions.filter(a => !newATitles.has(a.task));
+
+  const oldT = new Set(oldM.topics);
+  const newT = new Set(newM.topics);
+  const addedTopics = newM.topics.filter(t => !oldT.has(t));
+  const removedTopics = oldM.topics.filter(t => !newT.has(t));
+
+  let html = `<div class="diff-section"><h3>🔄 变化对比分析</h3>`;
+
+  if (added.length > 0) {
+    html += `<div class="section-block"><h4 style="color:#16A34A;">➕ 新增结论 (${added.length}条)</h4><ul>`;
+    html += added.map(c => `<li><span class="diff-new">${escapeHtml(c)}</span></li>`).join('');
+    html += `</ul></div>`;
+  }
+  if (removed.length > 0) {
+    html += `<div class="section-block"><h4 style="color:#DC2626;">➖ 不再提及的结论 (${removed.length}条)</h4><ul>`;
+    html += removed.map(c => `<li><span class="diff-removed">${escapeHtml(c)}</span></li>`).join('');
+    html += `</ul></div>`;
+  }
+  if (addedActions.length > 0) {
+    html += `<div class="section-block"><h4 style="color:#16A34A;">➕ 新增行动事项 (${addedActions.length}项)</h4><ul>`;
+    html += addedActions.map(a => `<li><span class="diff-new">${escapeHtml(a.task)}</span> <span style="color:#6B7280;font-size:12px;">(${escapeHtml(a.who)})</span></li>`).join('');
+    html += `</ul></div>`;
+  }
+  if (removedActions.length > 0) {
+    html += `<div class="section-block"><h4 style="color:#DC2626;">➖ 已完成的/不再提及的行动事项 (${removedActions.length}项)</h4><ul>`;
+    html += removedActions.map(a => `<li><span class="diff-removed">${escapeHtml(a.task)}</span></li>`).join('');
+    html += `</ul></div>`;
+  }
+  if (addedTopics.length > 0 || removedTopics.length > 0) {
+    html += `<div class="section-block"><h4>📊 议题变化</h4>`;
+    if (addedTopics.length > 0) html += `<p style="color:#16A34A;font-size:13px;">新增议题：<span class="diff-new">${addedTopics.map(escapeHtml).join('、')}</span></p>`;
+    if (removedTopics.length > 0) html += `<p style="color:#DC2626;font-size:13px;">不再讨论：<span class="diff-removed">${removedTopics.map(escapeHtml).join('、')}</span></p>`;
+    html += `</div>`;
   }
 
-  document.getElementById('milestoneSummary').innerHTML = all.length ?
-    `<div class="px-3 py-1 bg-pink-50 rounded-lg">🎂 生日 <span class="font-bold text-pink-600">${birthdays.length}</span> 人</div><div class="px-3 py-1 bg-amber-50 rounded-lg">🏆 入职周年 <span class="font-bold text-amber-600">${anniversaries.length}</span> 人</div>` :
-    `<div class="px-3 py-1 bg-gray-50 rounded-lg text-gray-400">🎉 未来30天内没有即将到来的纪念日</div>`;
-
-  const renderList = (containerId, items) => {
-    const container = document.getElementById(containerId);
-    if (!items.length) { container.innerHTML = `<div class="text-xs text-gray-400 py-2">暂无数据</div>`; return; }
-    container.innerHTML = items.map(item => {
-      const isUrgent = item.daysLeft <= 7;
-      const color = item.type === 'birthday' ? 'pink' : 'amber';
-      return `<div class="flex items-center justify-between p-2 border-l-4 ${isUrgent?`border-${color}-400 bg-${color}-50`:`border-${color}-200`} rounded bg-gray-50">
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold bg-${color}-100 text-${color}-700">${item.name[0]}</div>
-          <div><div class="text-sm font-semibold truncate">${item.name} <span class="text-xs text-gray-400">${item.label}</span> ${isUrgent?'<span class="text-xs font-bold text-red-600 ml-1">⏰</span>':''}</div><div class="text-xs text-gray-500">${item.dateStr}</div></div>
-        </div>
-        <div class="font-bold text-sm ${isUrgent?'text-red-600':'text-gray-600'}">${item.daysLeft}天</div>
-      </div>`;
-    }).join('');
-  };
-  renderList('birthdayList', birthdays);
-  renderList('anniversaryList', anniversaries);
+  html += `</div>`;
+  return html;
 }
 
-// 年假计算器
-function updateStartDate(){}
-function calculateLeave() {
-  const year = document.getElementById('calcYear').value;
-  const leaveDate = document.getElementById('leaveDate').value;
-  const annualDays = parseInt(document.getElementById('annualLeave').value);
-  if (!leaveDate) { alert('请选择离职日期'); return; }
-  const daysWorked = Math.floor((new Date(leaveDate) - new Date(year+'-01-01')) / (1000 * 60 * 60 * 24)) + 1;
-  const result = (daysWorked / 365 * annualDays).toFixed(2);
-  const r = document.getElementById('leaveResult');
-  r.classList.remove('hidden');
-  r.innerHTML = `<p><strong>📅 ${year}-01-01 ～ ${leaveDate}</strong></p><p>已过 ${daysWorked} 天</p><p>应休：${result} 天</p>`;
+// ============ Tab switching ============
+function switchTab(index) {
+  document.querySelectorAll('.nav-tab').forEach((t, i) => {
+    t.classList.toggle('active', i === index);
+  });
+  document.querySelectorAll('.compare-pair').forEach((p, i) => {
+    p.style.display = i === index ? '' : 'none';
+  });
 }
 
-// 周次切换
-document.getElementById('weekSelector').addEventListener('change', function() {
-  document.querySelectorAll('.week-content').forEach(c => c.classList.add('hidden'));
-  const t = document.getElementById(this.value);
-  if (t) t.classList.remove('hidden');
-});
+function toggleFullContent(btn) {
+  const box = btn.nextElementSibling;
+  box.style.display = box.style.display === 'block' ? 'none' : 'block';
+}
 
-renderMilestones();
+// ============ Helpers ============
+function priBadge(pri) {
+  if (!pri) return '-';
+  const p = pri.toLowerCase();
+  if (p === '高' || p === '高优先级') return '<span style="color:#DC2626;font-weight:700;">🔴 高</span>';
+  if (p === '中' || p === '中优先级') return '<span style="color:#D97706;font-weight:700;">🟡 中</span>';
+  if (p === '低' || p === '低优先级') return '<span style="color:#6B7280;font-weight:700;">⚪ 低</span>';
+  return escapeHtml(pri);
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// ============ Init ============
+init();
 </script>
-
 </body>
 </html>
