@@ -240,18 +240,18 @@ body.edit-mode .top-nav { border-bottom: 2px solid var(--primary); }
     <!-- 甘特图 -->
     <div class="panel">
       <h2>📅 本周关键节点 Timeline</h2>
-      <div style="font-size:.78rem;margin-bottom:2px;">工资核算</div>
-      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#2563eb,#60a5fa);" data-w="85%">85%</div></div>
-      <div style="font-size:.78rem;margin-bottom:2px;">员工入职</div>
-      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#10b981,#34d399);" data-w="40%">40%</div></div>
-      <div style="font-size:.78rem;margin-bottom:2px;">注销公告</div>
-      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#f59e0b,#fbbf24);" data-w="60%">60%</div></div>
-      <div style="font-size:.78rem;margin-bottom:2px;">积分制落地</div>
-      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#8b5cf6,#a78bfa);" data-w="30%">30%</div></div>
-      <div style="font-size:.78rem;margin-bottom:2px;">团险续费</div>
-      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#06b6d4,#22d3ee);" data-w="70%">70%</div></div>
-      <div style="font-size:.78rem;margin-bottom:2px;">AI 招聘优化</div>
-      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#ef4444,#f87171);" data-w="50%">50%</div></div>
+      <div style="font-size:.78rem;margin-bottom:2px;">工资核算与考勤</div>
+      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#2563eb,#60a5fa);" data-w="80%">80%</div></div>
+      <div style="font-size:.78rem;margin-bottom:2px;">社保公积金购买</div>
+      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#10b981,#34d399);" data-w="65%">65%</div></div>
+      <div style="font-size:.78rem;margin-bottom:2px;">招聘推进与简历筛选</div>
+      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#f59e0b,#fbbf24);" data-w="50%">50%</div></div>
+      <div style="font-size:.78rem;margin-bottom:2px;">月度报销与费用提交</div>
+      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#8b5cf6,#a78bfa);" data-w="55%">55%</div></div>
+      <div style="font-size:.78rem;margin-bottom:2px;">聚客软著新增提交</div>
+      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#06b6d4,#22d3ee);" data-w="30%">30%</div></div>
+      <div style="font-size:.78rem;margin-bottom:2px;">培训小工具优化</div>
+      <div class="gantt-bar"><div class="gantt-fill" style="width:0%;background:linear-gradient(90deg,#ef4444,#f87171);" data-w="45%">45%</div></div>
     </div>
     <!-- 各主体人事数据 + 每周人员明细 -->
     <div class="panel">
@@ -334,46 +334,48 @@ const DEFAULT_DATA = {
     { type: "absent", text: "考勤异常：0 人",    who: "" },
   ],
   lastWeek: [
-    { title: "一、人事板块 (3项)", items: [
-      "体检已提交被驳回，目前待三甲医院报价",
-      "香港移动业务了解",
-      "玉枕人员续期情况沟通" ] },
-    { title: "二、行政板块 (3项)", items: [
-      "云算力注册地月度费用支付",
-      "法丞阅读费用支付",
-      "聚客软著资料完成上传（2 份）" ] },
+    { title: "一、人事板块 (5项)", items: [
+      "社保公积金购买（还需处理：聚客、星青年）",
+      "员工体检：广医二院已报价，还缺珠江医院",
+      "新增招聘需求：海外达人合作经理，现已在 BOSS 发布岗位",
+      "完成中秋福利品派发",
+      "云算力社保已按规定递交资料并新增非全日制人员" ] },
+    { title: "二、行政板块 (1项)", items: [
+      "软著：聚客新增 1 份，目前待受理" ] },
     { title: "三、工商板块 (2项)", items: [
-      "惠州溪云错误资料已改正，营业执照已寄出",
-      "佛山通联达注销预审已通过，交由琪琪提交资料" ] },
+      "佛山通联达：已完成，《简易注销通知书》已领取",
+      "惠州溪云：已完成，《简易注销通知书》未领取" ] },
     { title: "四、AI 工具模块 (1项)", items: [
-      "KOL 周会会议纪要更新" ] },
+      "KOL 周会会议纪要已更新" ] },
   ],
   thisWeek: [
     { title: "一、人事板块 (4项)", items: [
-      "按需推进员工年度体检报价整合",
-      "完成玉枕人员资料签订",
-      "完成中秋福利品派发",
-      "完成云算力非全日制人员增加事宜（可能要线下）" ] },
-    { title: "二、行政板块 (暂无)", items: [
+      "完成社保公积金购买（还需处理：聚客、星青年公积金需预约线下处理）",
+      "跟进招聘情况，收取并筛选相关候选人简历",
+      "完成月度考勤",
+      "完成工资表基础信息更新" ] },
+    { title: "二、行政板块 (4项)", items: [
+      "提交月度报销",
+      "提交同福西租金支付",
+      "提交 IFC 10 月相关费用",
+      "软著：新增聚客软著 2 份，待提交" ] },
+    { title: "三、工商板块 (暂无)", items: [
       "暂无" ] },
-    { title: "三、工商板块 (1项)", items: [
-      "跟进惠州溪云注销情况事宜" ] },
-    { title: "四、AI 工具模块 (2项)", items: [
-      "更新 KOL 周会纪要",
-      "优化周会汇报工具" ] },
+    { title: "四、AI 工具模块 (1项)", items: [
+      "根据反馈优化培训小工具" ] },
   ],
   risks: [
-    { level: "high", title: "玉枕人员资料签订待完成", impact: "本周人事板块已推进玉枕人员资料签订，但仍需跟进确认签署进度，资料未闭环将影响后续社保/用工合规", action: "确认玉枕人员资料签署到位并归档，避免用工合规风险" },
-    { level: "high", title: "员工年度体检报价未整合", impact: "体检已提交被驳回，正待三甲医院报价，若报价整合滞后，年度体检安排将无法落地", action: "按需推进体检报价整合，确定可接受的体检方案并落实" },
-    { level: "mid", title: "惠州溪云注销跟进待结果", impact: "营业执照已寄出，但注销进度仍需持续跟踪，注销闭环未完成前存在流程悬空风险", action: "跟进惠州溪云注销办理情况，及时反馈并更新进度" },
-    { level: "mid", title: "云算力非全日制人员增加待落地", impact: "增加事宜已提上日程，但涉及线下流程及用工合规，若推进慢将影响人员补位时效", action: "推进云算力非全日制人员增加事宜，按合规要求完成签约" },
-    { level: "mid", title: "中秋福利品派发待跟进", impact: "中秋福利品已安排派发，但仍需确认实际发放到位情况，未闭环可能影响员工体验", action: "确认中秋福利品全部派发到位并留存发放记录" },
+    { level: "high", title: "社保公积金线下处理待闭环", impact: "聚客、星青年公积金需预约线下处理，若未及时办理将影响员工社保公积金权益与用工合规", action: "尽快预约并完成聚客、星青年公积金线下办理，确认到账后归档凭证" },
+    { level: "high", title: "软著新增提交进度滞后", impact: "聚客软著新增 2 份及上周 1 份均处于待提交/待受理状态，若不及时推进将影响软著资质储备", action: "本周提交聚客软著 2 份，并跟进上周 1 份受理进度" },
+    { level: "mid", title: "员工年度体检报价未整合", impact: "广医二院已报价，仍缺珠江医院报价，若整合滞后将影响年度体检方案落地", action: "跟进珠江医院报价，完成方案比价后报审" },
+    { level: "mid", title: "招聘岗位简历量待补充", impact: "海外达人合作经理已在 BOSS 发布，但仍需收取并筛选足够候选人简历，进度偏慢", action: "跟进招聘情况，收取并筛选相关候选人简历" },
+    { level: "mid", title: "惠州溪云注销通知书待领取", impact: "已完成注销但《简易注销通知书》尚未领取，未闭环存在流程悬空", action: "跟进惠州溪云注销情况，领取《简易注销通知书》完成闭环" },
   ],
   aiTips: [
-    "<strong>促体检</strong>：按需推进员工年度体检报价整合，确定可落地方案并跟进落实。",
-    "<strong>签资料</strong>：完成玉枕人员资料签订，确保用工资料归档闭环。",
-    "<strong>办入职</strong>：推进云算力非全日制人员增加事宜，按合规要求完成签约补位。",
-    "<strong>闭环</strong>：跟进惠州溪云注销办理情况，确认中秋福利品派发到位。",
+    "<strong>保社保</strong>：完成社保公积金购买，预约线下处理聚客、星青年公积金，确认到账归档。",
+    "<strong>促招聘</strong>：跟进海外达人合作经理招聘，收取并筛选候选人简历，推进面试安排。",
+    "<strong>办软著</strong>：提交聚客软著新增 2 份，跟进月度报销与同福西租金、IFC 费用提交。",
+    "<strong>闭环</strong>：跟进珠江医院体检报价与惠州溪云通知书领取，完成月度考勤与工资表更新。",
   ],
 };
 
