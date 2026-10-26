@@ -337,47 +337,59 @@ const DEFAULT_DATA = {
   ],
     lastWeek: [
     { title: "一、人事板块", items: [
-      "离职人员资料审核，已在系统填报",
-      "培训板块更新（如何使用 AI）",
-      "完成面试协议（AI 交付工程师 2 名、海外达人合作经理 1 人）",
-      "社保公积金汇总及购买（还剩聚客、云算力）"
+      "转正完成审核（姚晓敏）",
+      "合同完成续签（颜顺民）",
+      "社保公积金完成购买及上传",
+      "工资表初版已完成，待个别数据（电子商务、星青年、夏风星河已提交）",
+      "BOSS 职位更新及筛查简历"
     ]},
     { title: "二、行政板块", items: [
-      "法丞月度费用支付（常务、说理网）",
-      "打印机费用支付（素社、279）",
-      "素社租金费用支付",
-      "聚客两地牌（41D1N）完成批文卡续期、海关备案"
+      "完成法丞月度费用支付",
+      "完成 IFC 绿植费用支付",
+      "完成顺丰月结费用支付",
+      "月度报销已提交",
+      "两地牌续期资料已交老板"
     ]},
-    { title: "三、工商板块", items: ["暂无"] },
-    { title: "四、AI 工具模块", items: ["培训小工具更新"] }
-    ],
-    thisWeek: [
+    { title: "三、工商板块", items: [] },
+    { title: "四、AI 工具模块", items: [
+      "KOL 周会纪要更新",
+      "积分制小工具更新"
+    ]}
+  ],
+
+  thisWeek: [
     { title: "一、人事板块", items: [
-      "邀约面试",
-      "完成玉枕劳动合同续签（颜顺民）",
-      "完成社保公积金购买",
-      "完成月度考勤（24、25 为周末）"
+      "完成工资表计算及审核",
+      "完成简历初筛及提交并邀约合适人员面试",
+      "完成 MPF 购买"
     ]},
     { title: "二、行政板块", items: [
-      "完成 IFC 绿植季度费用支付",
-      "完成聚客两地牌交往运输署资料准备"
+      "完成 IFC 租金等费用支付",
+      "完成京东月结费用支付"
     ]},
-    { title: "三、工商板块", items: ["暂无"] },
-    { title: "四、AI 工具模块", items: ["完成员工积分制小工具优化"] }
-    ],
-    risks: [
-    { level: "high", title: "离职人员资料收取不闭环", impact: "玉枕优化、梁悦等多批离职叠加，工牌、设备、系统账号等实物及电子资料若未全部收回，存在信息泄露与资产流失风险", action: "本周完成相关离职人员资料收取与清单核对，签收归档并同步解除系统权限" },
-    { level: "high", title: "社保公积金费用整理及补缴口径待确认", impact: "补缴情况若核算不及时或口径有误，将影响员工权益与用工合规，亦可能引发后续稽核风险", action: "完成社保公积金费用整理及补缴情况核对，确认金额与到账状态后归档凭证" },
-    { level: "mid", title: "海外达人合作经理面试结果待落地", impact: "已协助完成 2 人面试，若后续评估与反馈不及时，岗位空缺将延长，影响业务用人节奏", action: "跟进 2 名候选人面试评估结论，明确下一轮安排或录用意向" },
-    { level: "mid", title: "香港公司情况待实地摸清", impact: "对香港公司现状了解不足，可能影响薪酬、强积金、用工等跨境事务的衔接判断", action: "完成香港公司实地了解，形成情况梳理与后续待办清单" },
-    { level: "mid", title: "培训板块与行政小额费用待闭环", impact: "培训板块待更新、ETC 发票与打印机费用待交付支付，若挂起将影响月度费用归集与下月报销进度", action: "完成培训板块更新，同步推进 ETC 发票交付与打印机费用支付" },
-  ],    aiTips: [
-    "<strong>收资料</strong>：完成相关离职人员资料收取与清单核对，解除系统权限并归档，避免资产与信息遗漏。",
-    "<strong>清补缴</strong>：完成社保公积金费用整理及补缴情况核对，确认金额与到账状态，守住用工合规。",
-    "<strong>跟面试</strong>：跟进海外达人合作经理 2 名候选人面试评估结论，明确下一轮安排或录用意向。",
-    "<strong>摸香港</strong>：完成香港公司实地了解，梳理现状并形成跨境事务后续待办清单。",
-    "<strong>补台账</strong>：完成培训板块更新，同步推进 ETC 发票交付与打印机费用支付，归集月度费用。",
-  ],};
+    { title: "三、工商板块", items: [] },
+    { title: "四、AI 工具模块", items: [
+      "完成培训小工具更新",
+      "完成积分制小工具优化"
+    ]}
+  ],
+
+  risks: [
+    { level: "high", title: "工资表个别主体数据待确认", impact: "电子商务、星青年、夏风星河已提交，仍有人数或金额待核对，直接影响本月发薪节奏与准确性", action: "完成工资表计算及审核，逐一核对各主体人数与金额，确保发薪前数据闭环" },
+    { level: "high", title: "社保公积金遗留主体待办结", impact: "聚客、云算力等主体仍未完成购买或补缴，长期挂起将影响员工权益与合规状态", action: "完成社保公积金购买及上传，确认聚客、云算力等遗留主体一并办结" },
+    { level: "mid", title: "员工体检费用与发票待归集", impact: "体检费用已完成预付但发票与对账未落地，影响月度费用归集与下月报销进度", action: "跟进体检费用发票与对账，确认预付金额与实际参检人数一致" },
+    { level: "mid", title: "离职人员资料办结后收尾待确认", impact: "离职资料虽已办结，但工牌、设备、系统权限等实物与电子权限是否同步解除尚未确认", action: "核对离职人员资料办结清单，同步解除系统权限并归档签收记录" },
+    { level: "mid", title: "招聘岗位需持续跟进面试与入职", impact: "BOSS 职位已更新并邀约面试，若评估反馈不及时，岗位空缺将延长，影响业务用人节奏", action: "跟进邀约人员面试评估结论，明确下一轮安排或录用意向" },
+  ],
+
+  aiTips: [
+    "<strong>核工资</strong>：完成工资表计算及审核，逐一核对各主体人数与金额，确保本月发薪数据准确。",
+    "<strong>清社保</strong>：完成社保公积金购买及上传，重点办结聚客、云算力等遗留主体。",
+    "<strong>追体检</strong>：跟进体检费用发票与对账，确认预付金额与实际参检人数一致。",
+    "<strong>收离职</strong>：核对离职人员资料办结清单，同步解除系统权限并归档签收记录。",
+    "<strong>促招聘</strong>：跟进邀约人员面试评估结论，推进合适人员进入下一轮或录用。",
+  ],
+};
 
 let currentData = JSON.parse(JSON.stringify(DEFAULT_DATA));
 
@@ -448,19 +460,24 @@ function renderAll() {
 }
 
 /* ========== 深色模式 ========== */
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch(e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch(e) {} }
+};
+
 function toggleTheme() {
   const html = document.documentElement;
   const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
+  store.set('theme', next);
 }
-const savedTheme = localStorage.getItem('theme');
+const savedTheme = store.get('theme');
 if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
 
 /* ========== 周次切换 + 数据存档 ========== */
 function switchWeek(v) {
   if (v === 'current') { currentData = JSON.parse(JSON.stringify(DEFAULT_DATA)); renderAll(); return; }
-  const saved = localStorage.getItem('week_' + v);
+  const saved = store.get('week_' + v);
   if (saved) { currentData = JSON.parse(saved); }
   else { currentData = JSON.parse(JSON.stringify(DEFAULT_DATA)); }
   renderAll();
@@ -469,7 +486,7 @@ function switchWeek(v) {
 
 function saveWeek() {
   const key = currentData.week === 'current' ? 'current' : currentData.week;
-  localStorage.setItem('week_' + key, JSON.stringify(currentData));
+  store.set('week_' + key, JSON.stringify(currentData));
   showTip('✓ 已保存到本地（刷新不丢失）');
 }
 function showTip(msg) {
@@ -546,11 +563,12 @@ function exportImage() {
 }
 
 /* ========== 动画 ========== */
+function initAnimations() {
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
-
+}
 function animateBars() {
   document.querySelectorAll('.gantt-fill').forEach(el => {
     setTimeout(() => { el.style.width = el.getAttribute('data-w'); }, 300);
@@ -558,13 +576,19 @@ function animateBars() {
   const circle = document.getElementById('ringCircle');
   if (circle) {
     const r = 18, circ = 2 * Math.PI * r;
-    setTimeout(() => { circle.style.strokeDasharray = circ; circle.style.strokeDashoffset = circ * (1 - 0.6); }, 400);
+    circle.style.strokeDasharray = circ;
+    circle.style.strokeDashoffset = circ;
+    const pct = parseFloat(circle.getAttribute('data-pct')) || 0;
+    setTimeout(() => { circle.style.strokeDashoffset = circ * (1 - pct / 100); }, 300);
   }
 }
-animateBars();
 
-// 初始化
-renderAll();
+/* ========== 启动 ========== */
+window.addEventListener('DOMContentLoaded', () => {
+  renderAll();
+  initAnimations();
+  animateBars();
+});
 </script>
 </body>
 </html>
