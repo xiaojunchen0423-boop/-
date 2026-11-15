@@ -339,33 +339,35 @@ const DEFAULT_DATA = {
   ],
     lastWeek: [
     { title: "一、人事板块", items: [
-      "完成 joincom 工资表上传（梁总部分已收到）",
-      "推进简历筛选及面试邀约（财务实习面试 2 人）",
-      "AI 交付工程师：已联系候选人，下周五现场测试",
-      "员工薪酬框架已完成（个人人员待核对劳动合同）"
-    ]},
-    { title: "二、行政板块", items: [
-      "IFC 保洁费支付",
-      "软著：已将资料重新交回阿彬与 Jacco 沟通"
-    ]},
-    { title: "三、工商板块", items: ["暂无"] },
-    { title: "四、AI 工具模块", items: ["KOL 周会纪要更新"] }
-  ],
-
-  thisWeek: [
-    { title: "一、人事板块", items: [
-      "推进面试邀约（AI 交付工程师）",
-      "协助完成面试（财务实习生 3 人）",
-      "汇总各主体社保公积金情况",
-      "推进员工手册（假期部分）更新整理及汇报"
+      "刘佳经济补偿金已完成跟进",
+      "社保公积金情况已汇总（除聚客、云算力）",
+      "员工手册优化已交 cherry",
+      "完成财务实习生面试协助（3人）",
+      "AI交付工程师（陈熠暄）已发放 offer，16日入职"
     ]},
     { title: "二、行政板块", items: [
       "完成顺丰月结费用支付",
-      "完成京东月结费用支付"
+      "完成京东月结费用支付",
+      "完成通巴达费用支付",
+      "完成聚客工会盖章沟通及协调刻制安排"
     ]},
     { title: "三、工商板块", items: ["暂无"] },
     { title: "四、AI 工具模块", items: [
-      "与伟文沟通完成工信部培训信息通知（内部网）"
+      "整理 KOL 项目工作流程情况（以便后续接手）"
+    ]}
+  ],
+
+  thisWeek: [
+    { title: "一、人事板块", progress: 75, items: [
+      "完成新员工入职工作安排",
+      "按需完成社保公积金购买",
+      "推进员工手册优化情况",
+      "推进面试邀约"
+    ]},
+    { title: "二、行政板块", progress: 0, items: ["暂未"] },
+    { title: "三、工商板块", progress: 0, items: ["暂未"] },
+    { title: "四、AI 工具模块", progress: 60, items: [
+      "更新 KOL 工作流程汇总"
     ]}
   ],
 
@@ -560,6 +562,10 @@ function exportImage() {
 
 /* ========== 动画 ========== */
 function initAnimations() {
+if (typeof IntersectionObserver === 'undefined') {
+  document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+  return;
+}
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.1 });
